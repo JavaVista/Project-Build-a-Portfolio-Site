@@ -1,3 +1,10 @@
+:root {
+  --color-primary: #7d97ad;
+  --color-secondary: #02b3e4;
+  --color-dark: #2d3c49;
+  --color-light: #fff;
+}
+
 *,
 *::before,
 *::after {
@@ -18,25 +25,25 @@
 }
 
 .text-head {
-  font-size: 8vw;
+  font-size: clamp(2rem, 5vw, 4rem);
 }
 
 .text-head2 {
-  font-size: 7vw;
-  color: #7d97ad;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: var(--color-primary);
 }
 
 .featured-title,
 .link {
-  color: #2d3c49;
+  color: var(--color-dark);
 }
 
 .text {
-  font-size: 6vw;
+  font-size: clamp(1rem, 3vw, 2rem);
 }
 
 .featured-description {
-  color: #02b3e4;
+  color: var(--color-secondary);
 }
 /* End Global */
 
@@ -44,7 +51,7 @@
   text-align: center;
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: solid #7d97ad;
+  border-bottom: solid var(--color-primary);
 }
 
 .featured {
@@ -56,35 +63,26 @@
   text-align: center;
 }
 
-.item {
-  margin: 30px;
+.featured-items {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
 }
 
 /* Footer */
 footer {
-  background-color: #7d97ad;
+  background-color: var(--color-primary);
   font-size: 10px;
   margin-top: 18px;
   margin-bottom: 18px;
-  color: #fff;
+  color: var(--color-light);
   letter-spacing: 0.2em;
   text-align: center;
 }
 
 /* Breakpoints */
 @media screen and (min-width: 475px) {
-  .text-head {
-    font-size: 7vw;
-  }
-
-  .text-head2 {
-    font-size: 6vw;
-  }
-
-  .text {
-    font-size: 5vw;
-  }
-
   .featured-image {
     width: 100%;
   }
@@ -96,9 +94,11 @@ footer {
   }
 
   .header {
+    display: flex;
     justify-content: space-between;
     margin: 0 auto 30px;
     text-align: left;
+    max-width: 1440px;
   }
 
   .header-name {
@@ -110,51 +110,11 @@ footer {
     margin-left: 10px;
   }
 
-  .header,
   .featured-items {
-    display: flex;
+    flex-direction: row;
     max-width: 1440px;
-  }
-
-  .featured-items {
-    margin: auto;
+    margin: 20px auto 0;
     justify-content: center;
-    overflow: hidden;
-  }
-
-  .item {
-    margin: 20px 20px 20px 0;
-  }
-
-  .item:last-child {
-    margin-right: 0;
-  }
-}
-
-@media screen and (min-width: 830px) {
-  .text-head {
-    font-size: 5vw;
-  }
-
-  .text-head2 {
-    font-size: 4vw;
-  }
-
-  .text {
-    font-size: 3vw;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .text-head {
-    font-size: 4vw;
-  }
-
-  .text-head2 {
-    font-size: 3vw;
-  }
-
-  .text {
-    font-size: 2vw;
+    gap: 20px;
   }
 }
