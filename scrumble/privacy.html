@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Privacy Policy | SCRUMBLE</title>
+    
+    <!-- SEO and Social Meta -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" href="../assets/images/scrumble/icon.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+        /* Light Mode Defaults */
+        :root {
+            --color-background: #FDFBF7;
+            --color-surface: #FDFBF7;
+            --color-surface-bright: #FDFBF7;
+            --color-surface-container-low: #F5F3ED;
+            --color-surface-variant: #f8dcd9;
+            --color-on-surface: #1A1A1A;
+            --color-on-background: #1A1A1A;
+            --color-on-surface-variant: #6B6B6B;
+            --color-primary: #B22222;
+            --color-primary-container: #ffe9e6;
+            --color-on-primary-container: #B22222;
+            --color-on-primary: #ffffff;
+            --color-secondary: #00796B;
+            --color-warning: #B78A00;
+            --color-outline: #CFCFCF;
+            --color-outline-variant: #E0E0E0;
+        }
+
+        /* Dark Mode Automatically Triggers via System Preference */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #121212;
+                --color-surface: #1E1E1E;
+                --color-surface-bright: #252525;
+                --color-surface-container-low: #2A2A2A;
+                --color-surface-variant: #3B2A2A;
+                --color-on-surface: #E0E0E0;
+                --color-on-background: #E0E0E0;
+                --color-on-surface-variant: #A0A0A0;
+                --color-primary: #D32F2F;
+                --color-primary-container: #5C1515;
+                --color-on-primary-container: #FFD4D4;
+                --color-on-primary: #ffffff;
+                --color-secondary: #26A69A;
+                --color-warning: #FFD700;
+                --color-outline: #555555;
+                --color-outline-variant: #444444;
+            }
+        }
+    </style>
+
+    <!-- Tailwind Config and Script (Must NOT be deferred) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "on-primary-container": "var(--color-on-primary-container)",
+                        "on-primary": "var(--color-on-primary)",
+                        "secondary": "var(--color-secondary)",
+                        "warning": "var(--color-warning)",
+                        "background": "var(--color-background)",
+                        "surface": "var(--color-surface)",
+                        "surface-bright": "var(--color-surface-bright)",
+                        "surface-container-low": "var(--color-surface-container-low)",
+                        "surface-variant": "var(--color-surface-variant)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-background": "var(--color-on-background)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "outline": "var(--color-outline)",
+                        "outline-variant": "var(--color-outline-variant)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-max": "1200px",
+                        "unit": "4px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xxl": "64px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Courier Prime", "Courier New", "monospace"],
+                        "technical-data": ["Courier Prime", "Courier New", "monospace"],
+                        "display": ["Georgia", "serif"],
+                        "body-lg": ["Courier Prime", "Courier New", "monospace"],
+                        "body-md": ["Courier Prime", "Courier New", "monospace"],
+                        "headline-md": ["Georgia", "serif"],
+                        "headline-lg": ["Georgia", "serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", {"lineHeight": "1", "letterSpacing": "1px", "fontWeight": "700"}],
+                        "technical-data": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-1px", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "900"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.5px", "fontWeight": "900"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Asynchronous Google Fonts to fix render-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
+    </noscript>
+
+    <style>
+        .shadow-subtle { box-shadow: 1px 1px 0px rgba(0,0,0,0.15); }
+        .active-press:active { box-shadow: none; transform: translate(1px, 1px); }
+        html { scroll-behavior: smooth; }
+        
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-subtle-bounce {
+            animation: subtle-bounce 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+
+    <!-- TopAppBar -->
+    <header class="bg-background border-b border-outline-variant docked full-width top-0 sticky z-[45]">
+        <div class="flex items-center px-lg py-md w-full max-w-container-max mx-auto justify-center">
+            <div class="flex items-center mx-auto gap-sm cursor-pointer" onclick="window.location.href='index.html'">
+                <img alt="SCRUMBLE Logo" class="h-8 w-8 object-contain" src="../assets/images/scrumble/icon.png"/>
+                <span class="font-display text-headline-md text-primary tracking-tighter">SCRUMBLE</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="flex-grow w-full max-w-3xl mx-auto px-lg py-xl space-y-lg transition-opacity duration-300">
+        
+        <div class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT mt-xl">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">LEGAL: PRIVACY POLICY</div>
+            
+            <div class="space-y-md mt-md">
+                <h1 class="font-display text-headline-lg text-on-surface">Privacy Policy</h1>
+                <p class="font-technical-data text-on-surface-variant uppercase tracking-widest">Effective Date: May 11, 2026<br>Provider: Javier Carrion</p>
+                
+                <p class="font-body-md text-on-surface">Javier Carrion ("Provider", "we", "our", or "us") operates the SCRUMBLE mobile application (the "App") and the SCRUMBLE website (the "Site"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
+                
+                <h2 class="font-headline-md text-primary pt-md">1. Information Collection and Use</h2>
+                <p class="font-body-md text-on-surface"><strong>The Mobile App:</strong> The SCRUMBLE mobile application collects absolutely no personal data from you. Game progress and settings are stored entirely locally on your device. We do not track you, and we do not sell your data.</p>
+                <p class="font-body-md text-on-surface"><strong>The Website:</strong> The Site may collect personal data (specifically your email address and name) <strong>only</strong> if you explicitly and voluntarily provide it to us by opting into our newsletter or feedback forms. If provided, we use this information solely to send you updates about SCRUMBLE and related projects.</p>
+                
+                <h2 class="font-headline-md text-primary pt-md">2. Third-Party Services</h2>
+                <p class="font-body-md text-on-surface">While we do not collect data directly, our Service relies on third-party infrastructure that may have their own privacy policies:</p>
+                <ul class="list-disc pl-lg space-y-sm text-on-surface">
+                    <li><strong>Google Play Services:</strong> Required to facilitate in-app purchases (e.g., the Scrum Master Prep Pack). We do not receive or store your credit card information.</li>
+                    <li><strong>Netlify:</strong> Used to host our Site securely.</li>
+                    <li><strong>ConvertKit / Kit:</strong> Used to manage our optional email mailing list.</li>
+                    <li><strong>Canny.io:</strong> Used to manage our public feedback and feature request board.</li>
+                </ul>
+
+                <h2 class="font-headline-md text-primary pt-md">3. Data Retention and Deletion</h2>
+                <p class="font-body-md text-on-surface">If you have subscribed to our mailing list, we will retain your email address until you ask us to delete it. You have the right to opt out at any time by clicking the "Unsubscribe" link at the bottom of any email we send you, at which point your data will be permanently removed from our active list.</p>
+
+                <h2 class="font-headline-md text-primary pt-md">4. Children's Privacy</h2>
+                <p class="font-body-md text-on-surface">Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If you are a parent or guardian and you are aware that your child has provided us with Personal Data, please contact us immediately so we can remove it.</p>
+
+                <h2 class="font-headline-md text-primary pt-md">5. Changes to This Privacy Policy</h2>
+                <p class="font-body-md text-on-surface">We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+                <h2 class="font-headline-md text-primary pt-md">6. Contact Us</h2>
+                <p class="font-body-md text-on-surface">If you have any questions about this Privacy Policy, please contact us by email:<br>
+                <strong class="font-technical-data">code-vista@outlook.com</strong></p>
+                
+            </div>
+        </div>
+
+        <div class="flex justify-center pt-lg">
+            <a href="index.html" class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors font-label-caps uppercase text-[12px] tracking-widest">
+                <span class="material-symbols-outlined">arrow_back</span> Return to Headquarters
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-background border-t border-outline-variant py-xl w-full mt-auto">
+        <div class="max-w-container-max mx-auto px-lg flex flex-col items-center gap-xl">
+            <div class="flex flex-col items-center gap-sm">
+                <div class="p-2 animate-subtle-bounce">
+                    <img alt="SCRUMBLE Logo" class="h-16 w-16 object-contain" src="../assets/images/scrumble/icon.png" loading="lazy" width="64" height="64"/>
+                </div>
+                <span class="font-display text-headline-md text-primary tracking-tighter">SCRUMBLE</span>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-x-lg gap-y-md">
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="../index.html">Back to Portfolio</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-primary" href="privacy.html">Privacy Policy</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+            </div>
+            
+            <div class="text-center">
+                <p class="font-technical-data text-[12px] text-on-surface-variant uppercase tracking-widest">© 2026 Javier (Javi) Carrion. ALL RIGHTS RESERVED.</p>
+                <p class="font-technical-data text-[10px] text-outline uppercase tracking-[0.2em] mt-xs">VISUAL ENCRYPTION ACTIVE</p>
+                <p class="font-technical-data text-[10px] text-on-surface-variant mt-xs max-w-lg mx-auto leading-relaxed mt-4">
+                    "Professional Scrum Master" and "PSM" are trademarks of Scrum.org. "Certified ScrumMaster" and "CSM" are trademarks of Scrum Alliance. SCRUMBLE is an independent educational logic puzzle game and is not affiliated with or endorsed by these organizations.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
