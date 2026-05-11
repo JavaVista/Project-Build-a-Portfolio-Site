@@ -3,73 +3,49 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>SCRUMBLE | Master Scrum through Deduction</title>
+    <title>SCRUMBLE | Logic Puzzle Game for Scrum Master & PSM I Exam Prep</title>
     
     <!-- SEO and Social Meta -->
-    <meta name="description" content="Stop memorizing flashcards. SCRUMBLE is a single-player deduction game that teaches the Scrum framework. Perfect for PSM I and CSM exam prep.">
-    <meta property="og:title" content="SCRUMBLE | Learn Scrum Through Deduction">
-    <meta property="og:description" content="A unique logic puzzle game that turns Scrum certification prep into an investigative deduction game.">
+    <meta name="description" content="Stop memorizing flashcards. SCRUMBLE is a single-player logic puzzle game that teaches the Scrum framework. The perfect study tool for PSM I exam prep and Certified ScrumMaster certification.">
+    <meta property="og:title" content="SCRUMBLE | Learn the Scrum Framework Through Deduction">
+    <meta property="og:description" content="A unique logic puzzle game that turns Certified ScrumMaster and PSM I exam prep into an investigative deduction game.">
     <link rel="shortcut icon" href="../assets/images/scrumble/icon.png">
 
-    <!-- Fonts and Icons -->
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind Config and Script (Must NOT be deferred) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"/>
-    
-    <!-- Tailwind Configuration -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "primary-fixed-dim": "#ffb4ac",
-                        "on-error": "#ffffff",
-                        "primary-fixed": "#ffdad6",
-                        "surface-container": "#ffe9e6",
-                        "on-secondary": "#ffffff",
-                        "surface-container-high": "#fee2df",
-                        "error-container": "#ffdad6",
-                        "on-error-container": "#93000a",
-                        "surface-bright": "#FDFBF7",
-                        "tertiary-fixed": "#e5e2e1",
-                        "on-surface": "#261816",
-                        "on-tertiary": "#ffffff",
-                        "on-surface-variant": "#5a403e",
-                        "on-background": "#261816",
-                        "on-tertiary-fixed": "#1c1b1b",
-                        "error": "#ba1a1a",
-                        "on-tertiary-container": "#d7d5d4",
-                        "surface-dim": "#efd4d1",
-                        "surface-container-highest": "#f8dcd9",
-                        "secondary-fixed-dim": "#7ad7c6",
-                        "tertiary-fixed-dim": "#c8c6c5",
-                        "tertiary-container": "#5d5c5c",
-                        "surface-container-low": "#fff0ef",
-                        "surface-tint": "#b52424",
-                        "surface-container-lowest": "#ffffff",
-                        "primary": "#8f000d",
-                        "background": "#FDFBF7",
-                        "inverse-on-surface": "#ffedea",
-                        "tertiary": "#454544",
-                        "on-tertiary-fixed-variant": "#474746",
-                        "on-primary-container": "#ffc8c2",
-                        "surface-variant": "#f8dcd9",
-                        "on-primary-fixed": "#410003",
-                        "inverse-surface": "#3d2c2b",
-                        "secondary-fixed": "#97f3e2",
-                        "on-secondary-fixed-variant": "#005047",
-                        "outline": "#8e706d",
-                        "secondary": "#006b5e",
-                        "on-secondary-container": "#006f62",
-                        "secondary-container": "#94f0df",
-                        "outline-variant": "#e2beba",
-                        "on-secondary-fixed": "#00201b",
-                        "primary-container": "#b22222",
-                        "surface": "#FDFBF7",
-                        "inverse-primary": "#ffb4ac",
+                        "primary": "#B22222",
+                        "primary-container": "#ffe9e6",
+                        "on-primary-container": "#B22222",
                         "on-primary": "#ffffff",
-                        "on-primary-fixed-variant": "#92030f"
+                        "secondary": "#00796B",
+                        "warning": "#B78A00",
+                        "background": "#FDFBF7",
+                        "surface": "#FDFBF7",
+                        "surface-bright": "#FDFBF7",
+                        "surface-container-low": "#F5F3ED",
+                        "surface-variant": "#f8dcd9",
+                        "on-surface": "#1A1A1A",
+                        "on-background": "#1A1A1A",
+                        "on-surface-variant": "#6B6B6B",
+                        "outline": "#CFCFCF",
+                        "outline-variant": "#E0E0E0",
+                        // Dark mode overrides can be handled by Tailwind's standard dark classes
+                        "dark-bg": "#1E1E1E",
+                        "dark-surface": "#252525",
+                        "dark-text": "#F5F5F5",
+                        "dark-primary": "#D32F2F",
+                        "dark-secondary": "#26A69A",
+                        "dark-warning": "#FFD700"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -89,13 +65,13 @@
                         "xxl": "64px"
                     },
                     "fontFamily": {
-                        "label-caps": ["Courier Prime"],
-                        "technical-data": ["Courier Prime"],
-                        "display": ["Georgia"],
-                        "body-lg": ["Courier Prime"],
-                        "body-md": ["Courier Prime"],
-                        "headline-md": ["Georgia"],
-                        "headline-lg": ["Georgia"]
+                        "label-caps": ["Courier Prime", "Courier New", "monospace"],
+                        "technical-data": ["Courier Prime", "Courier New", "monospace"],
+                        "display": ["Georgia", "serif"],
+                        "body-lg": ["Courier Prime", "Courier New", "monospace"],
+                        "body-md": ["Courier Prime", "Courier New", "monospace"],
+                        "headline-md": ["Georgia", "serif"],
+                        "headline-lg": ["Georgia", "serif"]
                     },
                     "fontSize": {
                         "label-caps": ["14px", {"lineHeight": "1", "letterSpacing": "1px", "fontWeight": "700"}],
@@ -110,16 +86,26 @@
             },
         }
     </script>
+
+    <!-- Asynchronous Google Fonts to fix render-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
+    </noscript>
+
     <style>
-        .shadow-subtle {
-            box-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+        .shadow-subtle { box-shadow: 1px 1px 0px rgba(0,0,0,0.15); }
+        .active-press:active { box-shadow: none; transform: translate(1px, 1px); }
+        html { scroll-behavior: smooth; }
+        
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        .active-press:active {
-            box-shadow: none;
-            transform: translate(1px, 1px);
-        }
-        html {
-            scroll-behavior: smooth;
+        .animate-subtle-bounce {
+            animation: subtle-bounce 3s infinite ease-in-out;
         }
     </style>
 </head>
@@ -164,11 +150,11 @@
             </a>
             <a class="menu-link text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#case-file">
                 <span class="material-symbols-outlined">auto_stories</span>
-                <span class="">Case File</span>
+                <span class="">Why SCRUMBLE</span>
             </a>
             <a class="menu-link text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#field-intel">
                 <span class="material-symbols-outlined">folder</span>
-                <span class="">Field Intel</span>
+                <span class="">Technical Specs</span>
             </a>
             <a class="menu-link text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#prep-pack">
                 <span class="material-symbols-outlined">school</span>
@@ -183,20 +169,23 @@
     </aside>
 
     <main id="main-content" class="flex-grow w-full max-w-container-max mx-auto px-lg py-xl space-y-xxl transition-opacity duration-300">
+        
         <!-- Hero Section -->
         <section id="top" class="text-center space-y-lg py-xl border-b border-outline-variant" style="scroll-margin-top: 140px;">
-            <div class="inline-block p-4 border-2 border-primary rounded-lg mb-4 bg-surface-container-low shadow-subtle">
-                <img alt="SCRUMBLE Logo" class="h-24 w-24 object-contain mx-auto" src="../assets/images/scrumble/icon.png"/>
+            <div class="inline-block mb-4 animate-subtle-bounce">
+                <img alt="SCRUMBLE Logo" class="h-[140px] w-[140px] object-contain mx-auto" src="../assets/images/scrumble/icon.png" fetchpriority="high" width="140" height="140"/>
             </div>
-            <h1 class="font-display text-display text-on-surface">Master Scrum through Deduction</h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-body-md">A logic-grid puzzle game for future Scrum Masters or Puzzle Fans</p>
+            <h1 class="font-display text-display text-on-surface">Master the Scrum Framework Through Deduction</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-body-md">
+                A logic puzzle game designed for <strong>PSM I exam prep</strong>, future <strong>Certified ScrumMasters</strong>, and puzzle fans. Play the orientation campaign entirely for free.
+            </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-md pt-lg">
-                <button class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle active-press transition-all flex items-center justify-center gap-sm">
-                    <span class="material-symbols-outlined">play_arrow</span> PLAY NOW (PWA)
-                </button>
-                <button class="w-full sm:w-auto bg-surface-container text-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT border border-primary shadow-subtle active-press transition-all flex items-center justify-center gap-sm">
+                <a href="#" class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle active-press transition-all flex items-center justify-center gap-sm">
+                    <span class="material-symbols-outlined">play_arrow</span> PLAY FREE ON THE WEB (PWA)
+                </a>
+                <a href="#" class="w-full sm:w-auto bg-surface-container-low text-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT border border-primary shadow-subtle active-press transition-all flex items-center justify-center gap-sm">
                     <span class="material-symbols-outlined">android</span> GET IT ON GOOGLE PLAY
-                </button>
+                </a>
             </div>
         </section>
 
@@ -205,28 +194,32 @@
             <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
                 <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>grid_on</span>
                 <h3 class="font-headline-md text-headline-md text-on-surface">Logic Grid Puzzles</h3>
-                <p class="font-technical-data text-technical-data text-on-surface-variant">Solve complex scenarios by deducing relationships between events, artifacts, and roles.</p>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Solve complex scenarios by deducing relationships between Scrum events, artifacts, and roles in this satisfying logic puzzle game.</p>
             </div>
             <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
                 <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>warning</span>
                 <h3 class="font-headline-md text-headline-md text-on-surface">Coach &amp; Dread Modes</h3>
-                <p class="font-technical-data text-technical-data text-on-surface-variant">Learn with hints in Coach mode, or face unforgiving logic in Dread mode.</p>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Receive gentle guidance and warnings in Coach Mode 💡, or face unforgiving logic in the hardcore Dread Mode 💀.</p>
             </div>
             <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
                 <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>school</span>
                 <h3 class="font-headline-md text-headline-md text-on-surface">PSM I / CSM Exam Prep</h3>
-                <p class="font-technical-data text-technical-data text-on-surface-variant">Designed to reinforce the foundational knowledge required for certification.</p>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Specifically designed to reinforce the foundational Agile knowledge required to become a Certified ScrumMaster.</p>
             </div>
         </section>
 
         <!-- Why SCRUMBLE Section (Case File Style) -->
         <section id="case-file" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT" style="scroll-margin-top: 140px;">
-            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">CASE FILE: WHY SCRUMBLE?</div>
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">CASE FILE: WHY I BUILT SCRUMBLE</div>
             <div class="space-y-md mt-md">
-                <p class="font-body-md text-body-md text-on-surface">Memorization is insufficient for true mastery. The Scrum Guide is brief, but its application requires deep contextual reasoning.</p>
-                <p class="font-body-md text-body-md text-on-surface">SCRUMBLE isn't a test—it's a reconstruction. By deducing relationships from fragmented clues, you build the robust mental models required for real-world agility. Stop memorizing. Start deducing.</p>
+                <p class="font-body-md text-body-md text-on-surface">
+                    "Companies highly value Scrum knowledge, but respected certifications like the PSM I require real understanding, not just rote memorization. I wanted to create a better way to study than flipping through endless flashcards or passively reading guides.
+                </p>
+                <p class="font-body-md text-body-md text-on-surface">
+                    The Scrum Master role is all about removing obstacles, supporting teams, and helping organizations thrive through Sprints. I realized these constraints perfectly mimic a detective's case. So, I built SCRUMBLE: a game that turns the Scrum framework into a playable logic system. Instead of memorizing definitions, you learn to reason through Scrum by solving puzzles. Stop memorizing, and start deducing."
+                </p>
                 <div class="border-t border-dashed border-outline-variant pt-md mt-md flex items-center justify-between">
-                    <span class="font-technical-data text-technical-data text-on-surface-variant">STATUS: CLASSIFIED</span>
+                    <span class="font-technical-data text-technical-data text-on-surface-variant">DEVELOPER: JAVIER (JAVI) CARRION</span>
                     <span class="material-symbols-outlined text-on-surface-variant">fingerprint</span>
                 </div>
             </div>
@@ -234,47 +227,68 @@
 
         <!-- Platform Badges -->
         <section class="flex flex-col md:flex-row justify-center items-center gap-xl py-xl">
-            <img alt="Get it on Google Play" class="h-16 w-auto" src="../assets/images/scrumble/GetItOnGooglePlay_Badge_Web_color_English.png"/>
-            <img alt="Available as PWA" class="h-16 w-auto" src="../assets/images/scrumble/PWA_Badge.png"/>
+            <a href="#" title="Get it on Google Play" class="hover:scale-105 transition-transform">
+                <img alt="Get it on Google Play" class="h-16 w-auto" src="../assets/images/scrumble/GetItOnGooglePlay_Badge_Web_color_English.png" loading="lazy" width="545" height="161"/>
+            </a>
+            <a href="#" title="Available as PWA" class="hover:scale-105 transition-transform">
+                <img alt="Available as PWA" class="h-16 w-auto" src="../assets/images/scrumble/PWA_Badge.png" loading="lazy" width="220" height="60"/>
+            </a>
         </section>
 
-        <!-- High-Stakes CTA -->
+        <!-- High-Stakes CTA & Features Checklist -->
         <section id="field-intel" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT mb-xxl" style="scroll-margin-top: 140px;">
-            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">FIELD INTEL: INTERFACE</div>
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">FIELD INTEL: TECHNICAL SPECS</div>
             <div class="space-y-lg mt-md">
                 <div class="text-center space-y-sm">
                     <h2 class="font-display text-headline-lg text-on-surface">Mission-Ready Interface</h2>
-                    <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Master the framework in any environment with native Dark Mode support and intuitive logic-grid controls.</p>
+                    <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Master the framework in any environment with our intuitive logic-grid controls and robust technical features.</p>
                 </div>
+                
+                <!-- Expanded Feature Checklist -->
+                <div class="flex flex-wrap justify-center gap-md py-sm">
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">save</span> Autosave & Persistence
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">dark_mode</span> System-Aware Dark Mode
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">accessibility_new</span> WCAG AA Accessible
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">restart_alt</span> Manual Case Resets
+                    </span>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md pt-md">
                     <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
-                        <img alt="Game Interface - Light Mode" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level.png"/>
+                        <img alt="Game Interface - Light Mode" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level.png" loading="lazy" width="600" height="400"/>
                         <div class="p-sm border-t border-outline-variant">
                             <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Light Mode / Logic Grid</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
-                        <img alt="Game Interface - Clue List" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-clues+grid.png"/>
+                        <img alt="Game Interface - Clue List" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-clues+grid.png" loading="lazy" width="600" height="400"/>
                         <div class="p-sm border-t border-outline-variant">
-                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">ANALYZE FRAGMENTED CLUES TO UNCOVER HIDDEN RELATIONSHIPS.</span>
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Analyze Fragmented Clues</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
-                        <img alt="Reflection Quiz" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-reflective_quiz.png"/>
+                        <img alt="Reflection Quiz" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-reflective_quiz.png" loading="lazy" width="600" height="400"/>
                         <div class="p-sm border-t border-outline-variant">
-                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">REFLECTION QUIZZES PROMPTS REINFORCE REAL UNDERSTANDING</span>
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Reflection Quizzes</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
-                        <img alt="Game Interface - Dark Mode Main Menu" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-home-dark.png"/>
+                        <img alt="Game Interface - Dark Mode Main Menu" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-home-dark.png" loading="lazy" width="600" height="400"/>
                         <div class="p-sm border-t border-outline-variant">
                             <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Dark Mode / Main Menu</span>
                         </div>
                     </div>
                     <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
-                        <img alt="Game Interface - Dark Mode Logic Grid" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level-dark.png"/>
+                        <img alt="Game Interface - Dark Mode Logic Grid" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level-dark.png" loading="lazy" width="600" height="400"/>
                         <div class="p-sm border-t border-outline-variant">
-                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">DARK MODE / LOGIC GRID</span>
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Dark Mode / Logic Grid</span>
                         </div>
                     </div>
                 </div>
@@ -288,23 +302,27 @@
         <!-- Prep Pack Section -->
         <section id="prep-pack" class="bg-surface-container border border-primary p-xl rounded-lg shadow-subtle text-center space-y-lg" style="scroll-margin-top: 140px;">
             <h2 class="font-display text-headline-lg text-primary">Unlock the Scrum Master Prep Pack</h2>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Access advanced case files and test your understanding of roles, events, artifacts, and edge cases that appear on the Professional Scrum Master™ I (PSM I) and the Certified ScrumMaster® (CSM®) exam. A single, one-time procurement to elevate your skills.</p>
+            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Once you complete the free orientation campaign, access advanced case files and test your understanding of roles, events, artifacts, and edge cases that appear on the <strong>Professional Scrum Master™ I (PSM I)</strong> and <strong>Certified ScrumMaster® (CSM®)</strong> exams.</p>
             <div class="flex flex-col items-center gap-sm mt-md">
                 <div class="text-primary flex items-center gap-sm">
                     <span class="material-symbols-outlined">lock</span>
-                    <span class="font-label-caps text-label-caps uppercase">Unlock Prep Pack</span>
+                    <span class="font-label-caps text-label-caps uppercase">A single, one-time procurement</span>
                 </div>
-                <p class="font-technical-data text-technical-data text-on-surface-variant uppercase tracking-widest mt-sm font-body-md">Available for purchase within the SCRUMBLE app</p>
+                <p class="font-technical-data text-technical-data text-on-surface-variant uppercase tracking-widest mt-sm font-body-md">Available for purchase inside the app</p>
+                
+                <a href="#" class="mt-md bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle active-press transition-all flex items-center justify-center gap-sm hover:scale-105">
+                    <span class="material-symbols-outlined">play_arrow</span> PLAY ORIENTATION FOR FREE
+                </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-background border-t border-outline-variant py-xl w-full">
+    <footer class="bg-background border-t border-outline-variant py-xl w-full mt-auto">
         <div class="max-w-container-max mx-auto px-lg flex flex-col items-center gap-xl">
             <div class="flex flex-col items-center gap-sm">
-                <div class="p-2 border border-primary rounded-lg bg-surface-container-low shadow-subtle">
-                    <img alt="SCRUMBLE Logo" class="h-12 w-12 object-contain" src="../assets/images/scrumble/icon.png"/>
+                <div class="p-2 animate-subtle-bounce">
+                    <img alt="SCRUMBLE Logo" class="h-16 w-16 object-contain" src="../assets/images/scrumble/icon.png" loading="lazy" width="64" height="64"/>
                 </div>
                 <span class="font-display text-headline-md text-primary tracking-tighter">SCRUMBLE</span>
             </div>
@@ -316,43 +334,44 @@
             </div>
             
             <div class="flex justify-center gap-lg mt-md">
-                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://bsky.app/profile/code-vista.bsky.social" title="Bluesky">
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://bsky.app/profile/code-vista.bsky.social" aria-label="Bluesky Profile">
                     <span class="material-symbols-outlined text-2xl">flutter_dash</span>
                 </a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://www.linkedin.com/in/technologic" title="LinkedIn">
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://www.linkedin.com/in/technologic" aria-label="LinkedIn Profile">
                     <span class="material-symbols-outlined text-2xl">person_book</span>
                 </a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://www.techno-logic.us/" title="Website">
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps" href="https://www.techno-logic.us/" aria-label="Personal Website">
                     <span class="material-symbols-outlined text-2xl">language</span>
                 </a>
             </div>
             
             <div class="text-center">
-                <p class="font-technical-data text-[12px] text-on-surface-variant uppercase tracking-widest">© 2026 Techno-Logic - Javier Carrion. ALL RIGHTS RESERVED.</p>
+                <p class="font-technical-data text-[12px] text-on-surface-variant uppercase tracking-widest">© 2026 Techno-Logic - Javier (Javi) Carrion. ALL RIGHTS RESERVED.</p>
                 <p class="font-technical-data text-[10px] text-outline uppercase tracking-[0.2em] mt-xs">VISUAL ENCRYPTION ACTIVE</p>
+                <p class="font-technical-data text-[10px] text-on-surface-variant mt-xs max-w-lg mx-auto leading-relaxed mt-4">
+                    "Professional Scrum Master" and "PSM" are trademarks of Scrum.org. "Certified ScrumMaster" and "CSM" are trademarks of Scrum Alliance. SCRUMBLE is an independent educational logic puzzle game and is not affiliated with or endorsed by these organizations.
+                </p>
             </div>
         </div>
     </footer>
 
     <!-- Interactive Scripts -->
     <script>
-        // 1. Scroll Behavior for Sticky Nav
+        // Scroll Behavior for Sticky Nav
         let lastScrollTop = 0;
         const nav = document.getElementById('scroll-nav');
         
         window.addEventListener('scroll', () => {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (scrollTop > lastScrollTop && scrollTop > 150) {
-                // Scrolling down -> hide nav
                 nav.classList.add('-translate-y-full');
             } else {
-                // Scrolling up -> show nav
                 nav.classList.remove('-translate-y-full');
             }
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         }, false);
 
-        // 2. Menu Drawer Behavior
+        // Menu Drawer Behavior
         const menuBtn = document.getElementById('menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const menuOverlay = document.getElementById('menu-overlay');
@@ -361,42 +380,28 @@
         const menuLinks = document.querySelectorAll('.menu-link');
 
         function openMenu() {
-            // Slide in drawer
             menuDrawer.classList.remove('-translate-x-full');
             menuDrawer.classList.add('translate-x-0');
-            // Show overlay
             menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
             menuOverlay.classList.add('opacity-100');
-            // Dim background slightly for effect
             mainContent.classList.add('opacity-50', 'pointer-events-none');
-            
-            // Fix body scroll
             document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
-            // Slide out drawer
             menuDrawer.classList.remove('translate-x-0');
             menuDrawer.classList.add('-translate-x-full');
-            // Hide overlay
             menuOverlay.classList.remove('opacity-100');
             menuOverlay.classList.add('opacity-0', 'pointer-events-none');
-            // Restore background
             mainContent.classList.remove('opacity-50', 'pointer-events-none');
-            
-            // Restore body scroll
             document.body.style.overflow = '';
         }
 
-        // Event Listeners
         menuBtn.addEventListener('click', openMenu);
         closeMenuBtn.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', closeMenu);
 
-        // Close menu when clicking any link inside it
-        menuLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
         
         // Active state highlighter for menu links
         const observerOptions = {
@@ -421,7 +426,6 @@
             });
         }, observerOptions);
 
-        // Observe all sections with IDs
         document.querySelectorAll('section[id]').forEach((section) => {
             observer.observe(section);
         });
