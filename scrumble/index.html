@@ -15,37 +15,73 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <style>
+        /* Light Mode Defaults */
+        :root {
+            --color-background: #FDFBF7;
+            --color-surface: #FDFBF7;
+            --color-surface-bright: #FDFBF7;
+            --color-surface-container-low: #F5F3ED;
+            --color-surface-variant: #f8dcd9;
+            --color-on-surface: #1A1A1A;
+            --color-on-background: #1A1A1A;
+            --color-on-surface-variant: #6B6B6B;
+            --color-primary: #B22222;
+            --color-primary-container: #ffe9e6;
+            --color-on-primary-container: #B22222;
+            --color-on-primary: #ffffff;
+            --color-secondary: #00796B;
+            --color-warning: #B78A00;
+            --color-outline: #CFCFCF;
+            --color-outline-variant: #E0E0E0;
+        }
+
+        /* Dark Mode Automatically Triggers via System Preference */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #121212;
+                --color-surface: #1E1E1E;
+                --color-surface-bright: #252525;
+                --color-surface-container-low: #2A2A2A;
+                --color-surface-variant: #3B2A2A;
+                --color-on-surface: #E0E0E0;
+                --color-on-background: #E0E0E0;
+                --color-on-surface-variant: #A0A0A0;
+                --color-primary: #D32F2F;
+                --color-primary-container: #5C1515;
+                --color-on-primary-container: #FFD4D4;
+                --color-on-primary: #ffffff;
+                --color-secondary: #26A69A;
+                --color-warning: #FFD700;
+                --color-outline: #555555;
+                --color-outline-variant: #444444;
+            }
+        }
+    </style>
+
     <!-- Tailwind Config and Script (Must NOT be deferred) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "primary": "#B22222",
-                        "primary-container": "#ffe9e6",
-                        "on-primary-container": "#B22222",
-                        "on-primary": "#ffffff",
-                        "secondary": "#00796B",
-                        "warning": "#B78A00",
-                        "background": "#FDFBF7",
-                        "surface": "#FDFBF7",
-                        "surface-bright": "#FDFBF7",
-                        "surface-container-low": "#F5F3ED",
-                        "surface-variant": "#f8dcd9",
-                        "on-surface": "#1A1A1A",
-                        "on-background": "#1A1A1A",
-                        "on-surface-variant": "#6B6B6B",
-                        "outline": "#CFCFCF",
-                        "outline-variant": "#E0E0E0",
-                        // Dark mode overrides can be handled by Tailwind's standard dark classes
-                        "dark-bg": "#1E1E1E",
-                        "dark-surface": "#252525",
-                        "dark-text": "#F5F5F5",
-                        "dark-primary": "#D32F2F",
-                        "dark-secondary": "#26A69A",
-                        "dark-warning": "#FFD700"
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "on-primary-container": "var(--color-on-primary-container)",
+                        "on-primary": "var(--color-on-primary)",
+                        "secondary": "var(--color-secondary)",
+                        "warning": "var(--color-warning)",
+                        "background": "var(--color-background)",
+                        "surface": "var(--color-surface)",
+                        "surface-bright": "var(--color-surface-bright)",
+                        "surface-container-low": "var(--color-surface-container-low)",
+                        "surface-variant": "var(--color-surface-variant)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-background": "var(--color-on-background)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "outline": "var(--color-outline)",
+                        "outline-variant": "var(--color-outline-variant)"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
