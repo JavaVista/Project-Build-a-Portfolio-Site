@@ -58,9 +58,13 @@
   margin-top: 30px;
 }
 
-.content-header,
+.content-header {
+  text-align: center;
+}
+
 .item {
   text-align: center;
+  flex: 1;
 }
 
 .featured-items {
