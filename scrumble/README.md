@@ -2,7 +2,7 @@
 
 This directory contains the official, high-converting marketing landing page for the **SCRUMBLE** mobile application. 
 
-Currently, it is hosted as a sub-directory on the developer's portfolio site (`techno-logic.us/scrumble`), but it has been intentionally built to be completely standalone. This entire folder can be easily lifted and deployed to its own dedicated domain (e.g., `scrumble.app`) with zero code refactoring.
+Currently, it is hosted as a sub-directory on the developer's portfolio site (`techno-logic.us/scrumble`), but it has been intentionally built to be completely standalone. This entire folder can be easily lifted and deployed to its own dedicated domain (e.g., `scrumble.click`) with zero code refactoring.
 
 ## Architecture & Tech Stack
 
