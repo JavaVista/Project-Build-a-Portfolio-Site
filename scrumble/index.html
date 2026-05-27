@@ -756,7 +756,10 @@
                         animate(prepPurchaseInfo, { opacity: 1 }, { duration: 0.3, delay: 0.35 });
                         animate(prepCta, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.45 }).then(() => {
                             // Mimics the Hero PWA CTA hover transition: scale(1.02) and translateY(-1px)
-                            animate(prepCta, { scale: [1, 1.02, 1], y: [0, -1, 0] }, { duration: 0.4, ease: 'easeInOut' });
+                            animate(prepCta, { scale: [1, 1.02, 1], y: [0, -1, 0] }, { duration: 0.4, ease: 'easeInOut' }).then(() => {
+                                // Clear transform style to allow CSS hover/active effects to function properly
+                                prepCta.style.transform = '';
+                            });
                         });
                     }, { amount: 0.3 });
                 }
