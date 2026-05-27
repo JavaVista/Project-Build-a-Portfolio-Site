@@ -12,7 +12,8 @@ This landing page was built to prioritize speed, SEO, and aesthetics ("Bureaucra
 *   **Tailwind CSS (via CDN):** Used for rapid UI prototyping and layout management.
 *   **Custom CSS Variables:** Handles the core design tokens (`--color-primary`, `--color-surface`, etc.) to ensure exact parity with the mobile app's styling.
 *   **Native Dark Mode:** Automatically respects the user's OS `prefers-color-scheme` via a pure CSS `@media` query, swapping the custom variables instantly without JavaScript flashes.
-*   **Vanilla JavaScript:** A minimal script (less than 20 lines) handles the scroll-spy sticky navigation and the slide-out mobile drawer.
+*   **Motion Animation Library & Vanilla JS:** Uses vanilla JS and [Motion](https://motion.dev/) (via CDN) to orchestrate smooth, dossier-themed entry animations and responsive scroll reveals. Full support for `prefers-reduced-motion` is included.
+*   **Vanilla JavaScript:** A minimal script handles the scroll-spy sticky navigation and the slide-out mobile drawer.
 
 ## Integrations
 
