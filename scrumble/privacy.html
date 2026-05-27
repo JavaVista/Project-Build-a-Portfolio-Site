@@ -141,6 +141,32 @@
         .animate-subtle-bounce {
             animation: subtle-bounce 3s infinite ease-in-out;
         }
+
+        /* Enticing Text Link Hover Animations */
+        .link-premium {
+            position: relative;
+            display: inline-block;
+            transition: color 0.25s ease;
+        }
+        .link-premium::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--color-primary);
+            transform-origin: bottom right;
+            transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .link-premium:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .link-premium:hover {
+            color: var(--color-primary) !important;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
@@ -196,7 +222,7 @@
         </div>
 
         <div class="flex justify-center pt-lg">
-            <a href="index.html" class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors font-label-caps uppercase text-[12px] tracking-widest">
+            <a href="index.html" class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors font-label-caps uppercase text-[12px] tracking-widest link-premium">
                 <span class="material-symbols-outlined">arrow_back</span> Return to Headquarters
             </a>
         </div>
@@ -214,9 +240,9 @@
             </div>
             
             <div class="flex flex-wrap justify-center gap-x-lg gap-y-md">
-                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="../index.html">Back to Portfolio</a>
-                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-primary" href="privacy.html">Privacy Policy</a>
-                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors" href="terms.html">Terms of Service</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="../index.html">Back to Portfolio</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-primary link-premium" href="privacy.html">Privacy Policy</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="terms.html">Terms of Service</a>
             </div>
             
             <div class="text-center">
