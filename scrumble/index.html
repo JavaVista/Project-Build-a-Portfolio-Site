@@ -306,12 +306,12 @@
                 A logic puzzle game designed for <strong>PSM I exam prep</strong>, future <strong>Certified ScrumMasters</strong>, and puzzle fans. Play the orientation campaign entirely for free.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-md pt-lg">
-                <a href="https://scrumble.click" class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm">
-                    <span class="material-symbols-outlined">play_arrow</span> PLAY FREE ON THE WEB (PWA)
+                <a href="https://scrumble.click" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Play SCRUMBLE Free on the Web">
+                    <span class="material-symbols-outlined">play_arrow</span> PLAY FREE ON THE WEB
                 </a>
-                <button disabled class="w-full sm:w-auto bg-surface-container-low text-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT border border-primary opacity-50 cursor-not-allowed pointer-events-none flex items-center justify-center gap-sm">
-                    <span class="material-symbols-outlined">android</span> COMING SOON TO GOOGLE PLAY
-                </button>
+                <a href="https://play.google.com/store/apps/details?id=com.scrumble.game" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-surface-container-low text-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT border border-primary shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Get SCRUMBLE on Google Play">
+                    <span class="material-symbols-outlined">android</span> GET IT ON GOOGLE PLAY
+                </a>
             </div>
         </section>
 
@@ -351,14 +351,26 @@
             </div>
         </section>
 
-        <!-- Platform Badges -->
-        <section class="flex flex-col md:flex-row justify-center items-center gap-xl py-xl">
-            <div title="Coming Soon to Google Play" class="opacity-50 pointer-events-none cursor-not-allowed">
-                <img alt="Coming Soon to Google Play" class="h-16 w-auto" src="../assets/images/scrumble/GetItOnGooglePlay_Badge_Web_color_English.png" loading="lazy" width="545" height="161"/>
+        <!-- App Availability Section -->
+        <section id="availability" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT text-center space-y-lg" style="scroll-margin-top: 140px;">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">SYSTEM AVAILABILITY</div>
+            <div class="space-y-sm mt-md">
+                <h2 class="font-display text-headline-lg text-on-surface">Available Now</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                    SCRUMBLE is available now as a Web App and on Google Play.
+                </p>
             </div>
-            <a href="https://scrumble.click" title="Available as PWA" class="cta-button transition-transform">
-                <img alt="Available as PWA" class="h-16 w-auto" src="../assets/images/scrumble/PWA_Badge.png" loading="lazy" width="220" height="60"/>
-            </a>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-xl py-md">
+                <a href="https://scrumble.click" target="_blank" rel="noopener noreferrer" title="Play on the Web" class="cta-button transition-transform flex flex-col items-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2" aria-label="Play on the Web">
+                    <img alt="Play on the Web" class="h-16 w-auto" src="../assets/images/scrumble/PWA_Badge.png" loading="lazy" width="220" height="60"/>
+                    <span class="font-technical-data text-technical-data text-on-surface-variant link-premium">Play on the Web →</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.scrumble.game" target="_blank" rel="noopener noreferrer" title="Get it on Google Play" class="cta-button transition-transform flex flex-col items-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2" aria-label="Get it on Google Play">
+                    <img alt="Get it on Google Play" class="h-16 w-auto" src="../assets/images/scrumble/GetItOnGooglePlay_Badge_Web_color_English.png" loading="lazy" width="545" height="161"/>
+                    <span class="font-technical-data text-technical-data text-on-surface-variant link-premium">Get it on Google Play →</span>
+                </a>
+            </div>
         </section>
 
         <!-- High-Stakes CTA & Features Checklist -->
@@ -436,7 +448,7 @@
                 </div>
                 <p id="prep-pack-purchase-info" class="font-technical-data text-technical-data text-on-surface-variant uppercase tracking-widest mt-sm font-body-md">Available for purchase inside the app</p>
                 
-                <a id="prep-pack-cta" href="https://scrumble.click" class="mt-md bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm">
+                <a id="prep-pack-cta" href="https://scrumble.click" target="_blank" rel="noopener noreferrer" class="mt-md bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Play Orientation Campaign for Free">
                     <span class="material-symbols-outlined">play_arrow</span> PLAY ORIENTATION FOR FREE
                 </a>
             </div>
