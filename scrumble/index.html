@@ -305,7 +305,20 @@
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-body-md">
                 A logic puzzle game designed for <strong>PSM I exam prep</strong>, future <strong>Certified ScrumMasters</strong>, and puzzle fans. Play the orientation campaign entirely for free.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-md pt-lg">
+            
+            <!-- Product Hunt Embed Badge -->
+            <div id="product-hunt-badge" class="flex justify-center pt-md">
+                <!-- Light Theme Badge for Light Mode -->
+                <a class="block dark:hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" href="https://www.producthunt.com/posts/scrumble?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-scrumble" target="_blank" rel="noopener noreferrer" aria-label="SCRUMBLE on Product Hunt (Light Mode)">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1174824&theme=light" alt="SCRUMBLE - Master Scrum through deduction, not memorization. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+                <!-- Neutral Theme Badge for Dark Mode -->
+                <a class="hidden dark:block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" href="https://www.producthunt.com/posts/scrumble?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-scrumble" target="_blank" rel="noopener noreferrer" aria-label="SCRUMBLE on Product Hunt (Dark Mode)">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1174824&theme=neutral" alt="SCRUMBLE - Master Scrum through deduction, not memorization. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+            </div>
+
+            <div id="hero-ctas" class="flex flex-col sm:flex-row justify-center items-center gap-md pt-lg">
                 <a href="https://scrumble.click" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Play SCRUMBLE Free on the Web">
                     <span class="material-symbols-outlined">play_arrow</span> PLAY FREE ON THE WEB
                 </a>
@@ -609,11 +622,12 @@
             const logo = document.querySelector('#top img');
             const title = document.querySelector('#top h1');
             const subtitle = document.querySelector('#top p');
-            const ctas = document.querySelector('#top .flex');
+            const badge = document.getElementById('product-hunt-badge');
+            const ctas = document.getElementById('hero-ctas');
 
-            if (logo && title && subtitle && ctas) {
+            if (logo && title && subtitle && badge && ctas) {
                 if (prefersReducedMotion) {
-                    animate([logo, title, subtitle, ctas], { opacity: [0, 1] }, { duration: 0.3 });
+                    animate([logo, title, subtitle, badge, ctas], { opacity: [0, 1] }, { duration: 0.3 });
                 } else {
                     // Set initial state
                     logo.style.opacity = '0';
@@ -622,6 +636,8 @@
                     title.style.transform = 'translateY(12px)';
                     subtitle.style.opacity = '0';
                     subtitle.style.transform = 'translateY(12px)';
+                    badge.style.opacity = '0';
+                    badge.style.transform = 'translateY(12px)';
                     ctas.style.opacity = '0';
                     ctas.style.transform = 'translateY(12px)';
 
@@ -629,7 +645,8 @@
                     animate(logo, { opacity: 1, y: 0 }, { duration: 0.35, ease: 'easeOut' });
                     animate(title, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.12, ease: 'easeOut' });
                     animate(subtitle, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.22, ease: 'easeOut' });
-                    animate(ctas, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.32, ease: 'easeOut' });
+                    animate(badge, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.28, ease: 'easeOut' });
+                    animate(ctas, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.38, ease: 'easeOut' });
                 }
             }
 
