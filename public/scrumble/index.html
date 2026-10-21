@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SCRUMBLE | Logic Puzzle Game for Scrum Master & PSM I Exam Prep</title>
+    
+    <!-- SEO and Social Meta -->
+    <meta name="description" content="Stop memorizing flashcards. SCRUMBLE is a single-player logic puzzle game that teaches the Scrum framework. The perfect study tool for PSM I exam prep and Certified ScrumMaster certification.">
+    <link rel="canonical" href="https://techno-logic.us/scrumble/" />
+    
+    <meta property="og:title" content="SCRUMBLE | Learn the Scrum Framework Through Deduction">
+    <meta property="og:description" content="SCRUMBLE is a single-player logic puzzle game that teaches the Scrum framework through deduction. The perfect study tool for PSM I and CSM exam prep.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://techno-logic.us/scrumble/">
+    <meta property="og:image" content="https://techno-logic.us/assets/images/scrumble/icon.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SCRUMBLE | Learn the Scrum Framework Through Deduction">
+    <meta name="twitter:description" content="SCRUMBLE is a single-player logic puzzle game that teaches the Scrum framework through deduction. The perfect study tool for PSM I and CSM exam prep.">
+    <meta name="twitter:image" content="https://techno-logic.us/assets/images/scrumble/icon.png">
+    
+    <link rel="shortcut icon" href="../assets/images/scrumble/icon.png">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+        /* Light Mode Defaults */
+        :root {
+            --color-background: #FDFBF7;
+            --color-surface: #FDFBF7;
+            --color-surface-bright: #FDFBF7;
+            --color-surface-container-low: #F5F3ED;
+            --color-surface-variant: #f8dcd9;
+            --color-on-surface: #1A1A1A;
+            --color-on-background: #1A1A1A;
+            --color-on-surface-variant: #6B6B6B;
+            --color-primary: #B22222;
+            --color-primary-container: #ffe9e6;
+            --color-on-primary-container: #B22222;
+            --color-on-primary: #ffffff;
+            --color-secondary: #00796B;
+            --color-warning: #B78A00;
+            --color-outline: #CFCFCF;
+            --color-outline-variant: #E0E0E0;
+        }
+
+        /* Dark Mode Automatically Triggers via System Preference */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #121212;
+                --color-surface: #1E1E1E;
+                --color-surface-bright: #252525;
+                --color-surface-container-low: #2A2A2A;
+                --color-surface-variant: #3B2A2A;
+                --color-on-surface: #E0E0E0;
+                --color-on-background: #E0E0E0;
+                --color-on-surface-variant: #A0A0A0;
+                --color-primary: #D32F2F;
+                --color-primary-container: #5C1515;
+                --color-on-primary-container: #FFD4D4;
+                --color-on-primary: #ffffff;
+                --color-secondary: #26A69A;
+                --color-warning: #FFD700;
+                --color-outline: #555555;
+                --color-outline-variant: #444444;
+            }
+        }
+    </style>
+
+    <!-- Tailwind Config and Script (Must NOT be deferred) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "var(--color-primary)",
+                        "primary-container": "var(--color-primary-container)",
+                        "on-primary-container": "var(--color-on-primary-container)",
+                        "on-primary": "var(--color-on-primary)",
+                        "secondary": "var(--color-secondary)",
+                        "warning": "var(--color-warning)",
+                        "background": "var(--color-background)",
+                        "surface": "var(--color-surface)",
+                        "surface-bright": "var(--color-surface-bright)",
+                        "surface-container-low": "var(--color-surface-container-low)",
+                        "surface-variant": "var(--color-surface-variant)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-background": "var(--color-on-background)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "outline": "var(--color-outline)",
+                        "outline-variant": "var(--color-outline-variant)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-max": "1200px",
+                        "unit": "4px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xxl": "64px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Courier Prime", "Courier New", "monospace"],
+                        "technical-data": ["Courier Prime", "Courier New", "monospace"],
+                        "display": ["Georgia", "serif"],
+                        "body-lg": ["Courier Prime", "Courier New", "monospace"],
+                        "body-md": ["Courier Prime", "Courier New", "monospace"],
+                        "headline-md": ["Georgia", "serif"],
+                        "headline-lg": ["Georgia", "serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", {"lineHeight": "1", "letterSpacing": "1px", "fontWeight": "700"}],
+                        "technical-data": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-1px", "fontWeight": "900"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "900"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.5px", "fontWeight": "900"}]
+                    }
+                },
+            },
+        }
+    </script>
+
+    <!-- Asynchronous Google Fonts to fix render-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;family=Georgia:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
+    </noscript>
+
+    <!-- Motion Animation Library (Vanilla JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+
+    <style>
+        .shadow-subtle { box-shadow: 1px 1px 0px rgba(0,0,0,0.15); }
+        .active-press:active { box-shadow: none; transform: translate(1px, 1px); }
+        html { scroll-behavior: smooth; }
+        
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-subtle-bounce {
+            animation: subtle-bounce 3s infinite ease-in-out;
+        }
+
+        /* Premium CTA Transitions */
+        .cta-button {
+            transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.15s ease;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .cta-button:hover {
+                transform: scale(1.02) translateY(-1px);
+            }
+            .cta-button:active {
+                transform: scale(0.975) translateY(1px);
+            }
+        }
+        /* Custom input glow & alerts */
+        .formkit-input:focus {
+            box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.2) !important;
+        }
+        .formkit-alert-success {
+            animation: fadeInIntel 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeInIntel {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Enticing Text Link Hover Animations */
+        .link-premium {
+            position: relative;
+            display: inline-block;
+            transition: color 0.25s ease;
+        }
+        .link-premium::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--color-primary);
+            transform-origin: bottom right;
+            transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .link-premium:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .link-premium:hover {
+            color: var(--color-primary) !important;
+        }
+
+        /* Social Link Hover Transitions */
+        .social-link-premium {
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s ease;
+        }
+        .social-link-premium:hover {
+            transform: scale(1.15) rotate(2deg);
+            color: var(--color-primary) !important;
+        }
+
+        /* Menu Link Shift Transitions */
+        .menu-link-premium {
+            transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.2s ease, color 0.2s ease;
+        }
+        .menu-link-premium:hover {
+            transform: translateX(4px);
+            color: var(--color-primary) !important;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+
+    <!-- TopAppBar -->
+    <header class="bg-background dark:bg-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-[45]">
+        <div class="flex items-center px-lg py-md w-full max-w-container-max mx-auto justify-center">
+            <div class="flex items-center mx-auto">
+                <span class="font-display text-display text-primary dark:text-inverse-primary tracking-tighter">SCRUMBLE</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Scroll Spy Nav -->
+    <nav class="sticky top-[73px] z-40 bg-background/95 backdrop-blur-sm border-b border-outline-variant py-sm flex justify-center transition-transform duration-300 ease-in-out" id="scroll-nav">
+        <button id="menu-btn" class="flex items-center gap-sm px-md py-xs border border-primary bg-surface-container-low text-primary font-label-caps text-[12px] uppercase tracking-widest shadow-subtle active-press justify-center">
+            <span class="material-symbols-outlined text-[20px] flex items-center justify-center">menu</span>
+            <span class="flex items-center">Menu</span>
+        </button>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="menu-overlay" aria-hidden="true" class="fixed inset-0 bg-on-background/80 z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- Navigation Drawer -->
+    <aside id="menu-drawer" class="bg-surface-container-low text-primary rounded-r-xl h-full border-r border-outline-variant shadow-sm fixed left-0 top-0 z-50 w-64 flex flex-col py-lg px-md transition-transform duration-300 transform -translate-x-full">
+        <div class="mb-xl flex items-center justify-between border-b border-outline-variant pb-md">
+            <h2 class="font-headline-md text-headline-md text-primary">CLASSIFIED MENU</h2>
+            <button id="close-menu-btn" class="text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="flex-1 flex flex-col gap-sm">
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#top">
+                <span class="material-symbols-outlined">home</span>
+                <span class="">Top of Page</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#game-modes">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span class="">Game Modes</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#case-file">
+                <span class="material-symbols-outlined">auto_stories</span>
+                <span class="">Why SCRUMBLE</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#field-intel">
+                <span class="material-symbols-outlined">folder</span>
+                <span class="">Technical Specs</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#prep-pack">
+                <span class="material-symbols-outlined">school</span>
+                <span class="">Prep Pack</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="#newsletter">
+                <span class="material-symbols-outlined">mail</span>
+                <span class="">Newsletter</span>
+            </a>
+            <a class="menu-link menu-link-premium text-on-surface-variant hover:bg-surface-variant px-md py-md flex items-center gap-md font-body-md text-body-md rounded-lg transition-colors" href="https://techno-logic.canny.io/feature-requests-bugs" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined">forum</span>
+                <span class="">Provide Feedback</span>
+            </a>
+        </nav>
+        <div class="mt-auto pt-md border-t border-outline-variant">
+            <p class="font-technical-data text-technical-data text-on-surface-variant text-center opacity-70">
+                System Status: Secure
+            </p>
+        </div>
+    </aside>
+
+    <main id="main-content" class="flex-grow w-full max-w-container-max mx-auto px-lg py-xl space-y-xxl transition-opacity duration-300">
+        
+        <!-- Hero Section -->
+        <section id="top" class="text-center space-y-lg py-xl border-b border-outline-variant" style="scroll-margin-top: 140px;">
+            <div class="inline-block mb-4 animate-subtle-bounce">
+                <img alt="SCRUMBLE Logo" class="h-[140px] w-[140px] object-contain mx-auto" src="../assets/images/scrumble/icon.png" fetchpriority="high" width="140" height="140"/>
+            </div>
+            <h1 class="font-display text-display text-on-surface">Master the Scrum Framework Through Deduction</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto font-body-md">
+                A logic puzzle game designed for <strong>PSM I exam prep</strong>, future <strong>Certified ScrumMasters</strong>, and puzzle fans. Play the orientation campaign entirely for free.
+            </p>
+            
+            <!-- Product Hunt Embed Badge -->
+            <div id="product-hunt-badge" class="flex justify-center pt-md">
+                <!-- Light Theme Badge for Light Mode -->
+                <a class="block dark:hidden focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" href="https://www.producthunt.com/posts/scrumble?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-scrumble" target="_blank" rel="noopener noreferrer" aria-label="SCRUMBLE on Product Hunt (Light Mode)">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1174824&theme=light" alt="SCRUMBLE - Master Scrum through deduction, not memorization. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+                <!-- Neutral Theme Badge for Dark Mode -->
+                <a class="hidden dark:block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded" href="https://www.producthunt.com/posts/scrumble?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-scrumble" target="_blank" rel="noopener noreferrer" aria-label="SCRUMBLE on Product Hunt (Dark Mode)">
+                    <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1174824&theme=neutral" alt="SCRUMBLE - Master Scrum through deduction, not memorization. | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+                </a>
+            </div>
+
+            <div id="hero-ctas" class="flex flex-col sm:flex-row justify-center items-center gap-md pt-lg">
+                <a href="https://scrumble.click" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Play SCRUMBLE Free on the Web">
+                    <span class="material-symbols-outlined">play_arrow</span> PLAY FREE ON THE WEB
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.scrumble.game" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-surface-container-low text-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT border border-primary shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Get SCRUMBLE on Google Play">
+                    <span class="material-symbols-outlined">android</span> GET IT ON GOOGLE PLAY
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Bento Grid -->
+        <section id="game-modes" class="grid grid-cols-1 md:grid-cols-3 gap-lg" style="scroll-margin-top: 140px;">
+            <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
+                <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>grid_on</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Logic Grid Puzzles</h3>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Solve complex scenarios by deducing relationships between Scrum events, artifacts, and roles in this satisfying logic puzzle game.</p>
+            </div>
+            <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
+                <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>warning</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Coach &amp; Dread Modes</h3>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Receive gentle guidance and warnings in Coach Mode 💡, or face unforgiving logic in the hardcore Dread Mode 💀.</p>
+            </div>
+            <div class="bg-surface-container-low border border-outline-variant p-lg rounded-lg shadow-subtle flex flex-col items-center text-center space-y-md">
+                <span class="material-symbols-outlined text-primary text-4xl" style='font-variation-settings: "FILL" 1;'>school</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface">PSM I / CSM Exam Prep</h3>
+                <p class="font-technical-data text-technical-data text-on-surface-variant">Specifically designed to reinforce the foundational Agile knowledge required to become a Certified ScrumMaster.</p>
+            </div>
+        </section>
+
+        <!-- Why SCRUMBLE Section (Case File Style) -->
+        <section id="case-file" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT" style="scroll-margin-top: 140px;">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">CASE FILE: WHY I BUILT SCRUMBLE</div>
+            <div class="space-y-md mt-md">
+                <p class="font-body-md text-body-md text-on-surface">
+                    "Companies highly value Scrum knowledge, but respected certifications like the PSM I require real understanding, not just rote memorization. I wanted to create a better way to study than flipping through endless flashcards or passively reading guides.
+                </p>
+                <p class="font-body-md text-body-md text-on-surface">
+                    The Scrum Master role is all about removing obstacles, supporting teams, and helping organizations thrive through Sprints. I realized these constraints perfectly mimic a detective's case. So, I built SCRUMBLE: a game that turns the Scrum framework into a playable logic system. Instead of memorizing definitions, you learn to reason through Scrum by solving puzzles. Stop memorizing, and start deducing."
+                </p>
+                <div class="border-t border-dashed border-outline-variant pt-md mt-md flex items-center justify-between">
+                    <span class="font-technical-data text-technical-data text-on-surface-variant">DEVELOPER: JAVIER (JAVI) CARRION</span>
+                    <span class="material-symbols-outlined text-on-surface-variant">fingerprint</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Availability Section -->
+        <section id="availability" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT text-center space-y-lg" style="scroll-margin-top: 140px;">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">SYSTEM AVAILABILITY</div>
+            <div class="space-y-sm mt-md">
+                <h2 class="font-display text-headline-lg text-on-surface">Available Now</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                    SCRUMBLE is available now as a Web App and on Google Play.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-xl py-md">
+                <a href="https://scrumble.click" target="_blank" rel="noopener noreferrer" title="Play on the Web" class="cta-button transition-transform focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2" aria-label="Play on the Web">
+                    <img alt="Play on the Web" class="h-16 w-auto" src="../assets/images/scrumble/PWA_Badge.png" loading="lazy" width="220" height="60"/>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.scrumble.game" target="_blank" rel="noopener noreferrer" title="Get it on Google Play" class="cta-button transition-transform focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg p-2" aria-label="Get it on Google Play">
+                    <img alt="Get it on Google Play" class="h-16 w-auto" src="../assets/images/scrumble/GetItOnGooglePlay_Badge_Web_color_English.png" loading="lazy" width="545" height="161"/>
+                </a>
+            </div>
+        </section>
+
+        <!-- High-Stakes CTA & Features Checklist -->
+        <section id="field-intel" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT mb-xxl" style="scroll-margin-top: 140px;">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">FIELD INTEL: TECHNICAL SPECS</div>
+            <div class="space-y-lg mt-md">
+                <div class="text-center space-y-sm">
+                    <h2 class="font-display text-headline-lg text-on-surface">Mission-Ready Interface</h2>
+                    <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Master the framework in any environment with our intuitive logic-grid controls and robust technical features.</p>
+                </div>
+                
+                <!-- Expanded Feature Checklist -->
+                <div id="tech-specs-tags" class="flex flex-wrap justify-center gap-md py-sm">
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">save</span> Autosave & Persistence
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">dark_mode</span> System-Aware Dark Mode
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">accessibility_new</span> WCAG AA Accessible
+                    </span>
+                    <span class="flex items-center gap-xs font-technical-data text-secondary border border-secondary rounded px-2 py-1 bg-surface-container-low">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">restart_alt</span> Manual Case Resets
+                    </span>
+                </div>
+
+                <div id="screenshot-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-md pt-md">
+                    <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
+                        <img alt="Game Interface - Light Mode" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level.png" loading="lazy" width="600" height="400"/>
+                        <div class="p-sm border-t border-outline-variant">
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Light Mode / Logic Grid</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
+                        <img alt="Game Interface - Clue List" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-clues+grid.png" loading="lazy" width="600" height="400"/>
+                        <div class="p-sm border-t border-outline-variant">
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Analyze Fragmented Clues</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
+                        <img alt="Reflection Quiz" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-reflective_quiz.png" loading="lazy" width="600" height="400"/>
+                        <div class="p-sm border-t border-outline-variant">
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Reflection Quizzes</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
+                        <img alt="Game Interface - Dark Mode Main Menu" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-home-dark.png" loading="lazy" width="600" height="400"/>
+                        <div class="p-sm border-t border-outline-variant">
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Dark Mode / Main Menu</span>
+                        </div>
+                    </div>
+                    <div class="border border-outline-variant rounded shadow-subtle overflow-hidden bg-surface-container-low">
+                        <img alt="Game Interface - Dark Mode Logic Grid" class="w-full h-auto object-cover" src="../assets/images/scrumble/scrumble-game-1st_level-dark.png" loading="lazy" width="600" height="400"/>
+                        <div class="p-sm border-t border-outline-variant">
+                            <span class="font-technical-data text-[10px] uppercase tracking-widest text-on-surface-variant">Dark Mode / Logic Grid</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-dashed border-outline-variant pt-md mt-md flex items-center justify-between">
+                    <span class="font-technical-data text-technical-data text-on-surface-variant">VISUAL ENCRYPTION: OPTIMIZED</span>
+                    <span class="material-symbols-outlined text-on-surface-variant">visibility</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prep Pack Section -->
+        <section id="prep-pack" class="bg-surface-container border border-primary p-xl rounded-lg shadow-subtle text-center space-y-lg" style="scroll-margin-top: 140px;">
+            <h2 id="prep-pack-title" class="font-display text-headline-lg text-primary">Unlock the Scrum Master Prep Pack</h2>
+            <p id="prep-pack-desc" class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Once you complete the free orientation campaign, access advanced case files and test your understanding of roles, events, artifacts, and edge cases that appear on the <strong>Professional Scrum Master™ I (PSM I)</strong> and <strong>Certified ScrumMaster® (CSM®)</strong> exams.</p>
+            <div class="flex flex-col items-center gap-sm mt-md">
+                <div id="prep-pack-lock-row" class="text-primary flex items-center gap-sm">
+                    <span id="prep-pack-lock" class="material-symbols-outlined">lock</span>
+                    <span class="font-label-caps text-label-caps uppercase">A single, one-time procurement</span>
+                </div>
+                <p id="prep-pack-purchase-info" class="font-technical-data text-technical-data text-on-surface-variant uppercase tracking-widest mt-sm font-body-md">Available for purchase inside the app</p>
+                
+                <a id="prep-pack-cta" href="https://scrumble.click" target="_blank" rel="noopener noreferrer" class="mt-md bg-primary text-on-primary font-label-caps text-label-caps px-xl py-lg rounded-DEFAULT shadow-subtle cta-button transition-all flex items-center justify-center gap-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label="Play Orientation Campaign for Free">
+                    <span class="material-symbols-outlined">play_arrow</span> PLAY ORIENTATION FOR FREE
+                </a>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter" class="border-2 border-outline-variant bg-surface-bright p-lg relative shadow-subtle rounded-DEFAULT mt-xxl" style="scroll-margin-top: 140px;">
+            <div class="absolute -top-4 left-lg bg-surface-bright px-2 font-label-caps text-label-caps text-primary border border-outline-variant">FIELD INTEL: NEWSLETTER</div>
+            <div class="space-y-md mt-md text-center max-w-2xl mx-auto">
+                <h2 class="font-display text-headline-lg text-on-surface">Join the Development Feed</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Get classified intel on new SCRUMBLE cases, bug fixes, and future games from Techno-Logic. No spam, ever.</p>
+                
+                <div class="mt-lg">
+                    <!-- ConvertKit Form -->
+                    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+                    <form action="https://app.kit.com/forms/9434428/subscriptions" class="seva-form formkit-form relative" method="post" data-sv-form="9434428" data-uid="b8ac251fa1" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Intel received. Check your inbox to confirm classification.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;recaptcha&quot;:{&quot;enabled&quot;:false}}}">
+                        
+                        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                        
+                        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields flex flex-col sm:flex-row justify-center gap-sm w-full mt-4">
+                            <div class="formkit-field w-full sm:w-2/3 relative">
+                                <input class="formkit-input w-full px-md py-md border border-outline-variant rounded bg-background text-on-background font-body-md focus:border-primary focus:outline-none shadow-sm transition-colors" name="email_address" aria-label="Email Address" placeholder="Enter your email address" required="" type="email">
+                            </div>
+                            <button data-element="submit" class="formkit-submit w-full sm:w-auto bg-primary text-on-primary font-label-caps px-lg py-md rounded shadow-subtle cta-button transition-all flex items-center justify-center gap-sm">
+                                <div class="formkit-spinner"><div></div><div></div><div></div></div>
+                                <span>SUBSCRIBE</span>
+                            </button>
+                        </div>
+                    </form>
+                    <!-- Essential ConvertKit styles for internal logic (spinner/alerts) -->
+                    <style>.formkit-form[data-uid="b8ac251fa1"] .formkit-alert{background:var(--color-surface-container-low);border:1px solid var(--color-warning);border-radius:5px;flex:1 0 auto;list-style:none;margin:25px auto;padding:12px;text-align:center;width:100%;color:var(--color-warning);font-family:inherit;font-size:14px;}.formkit-form[data-uid="b8ac251fa1"] .formkit-alert:empty{display:none;}.formkit-form[data-uid="b8ac251fa1"] .formkit-alert-success{border-color:var(--color-secondary);color:var(--color-secondary);}.formkit-form[data-uid="b8ac251fa1"] .formkit-spinner{display:none;height:0px;width:0px;margin:0 auto;position:absolute;top:0;left:0;right:0;overflow:hidden;text-align:center;transition:all 300ms ease-in-out;}.formkit-form[data-uid="b8ac251fa1"] .formkit-spinner > div{margin:auto;width:12px;height:12px;background-color:#fff;opacity:0.3;border-radius:100%;display:inline-block;animation:formkit-bouncedelay-formkit-form-data-uid-b8ac251fa1- 1.4s infinite ease-in-out both;}.formkit-form[data-uid="b8ac251fa1"] .formkit-spinner > div:nth-child(1){animation-delay:-0.32s;}.formkit-form[data-uid="b8ac251fa1"] .formkit-spinner > div:nth-child(2){animation-delay:-0.16s;}.formkit-form[data-uid="b8ac251fa1"] .formkit-submit[data-active] .formkit-spinner{opacity:1;display:flex;height:100%;width:50px;}.formkit-form[data-uid="b8ac251fa1"] .formkit-submit[data-active] span{opacity:0;} @keyframes formkit-bouncedelay-formkit-form-data-uid-b8ac251fa1-{0%,80%,100%{transform:scale(0);}40%{transform:scale(1);}}</style>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="main-footer" class="bg-background border-t border-outline-variant py-xl w-full mt-auto">
+        <div class="max-w-container-max mx-auto px-lg flex flex-col items-center gap-xl">
+            <div class="flex flex-col items-center gap-sm">
+                <div class="p-2 animate-subtle-bounce">
+                    <img alt="SCRUMBLE Logo" class="h-16 w-16 object-contain" src="../assets/images/scrumble/icon.png" loading="lazy" width="64" height="64"/>
+                </div>
+                <span class="font-display text-headline-md text-primary tracking-tighter">SCRUMBLE</span>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-x-lg gap-y-md">
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="../index.html">Back to Portfolio</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="https://techno-logic.canny.io/feature-requests-bugs" target="_blank" rel="noopener noreferrer">Provide Feedback</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="privacy.html">Privacy Policy</a>
+                <a class="font-label-caps text-[12px] uppercase tracking-[0.1em] text-on-surface-variant hover:text-primary transition-colors link-premium" href="terms.html">Terms of Service</a>
+            </div>
+            
+            <div class="flex justify-center gap-lg mt-md">
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps social-link-premium" href="https://bsky.app/profile/code-vista.bsky.social" aria-label="Bluesky Profile" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined text-2xl">flutter_dash</span>
+                </a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps social-link-premium" href="https://www.linkedin.com/in/technologic" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined text-2xl">person_book</span>
+                </a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center font-label-caps social-link-premium" href="https://www.techno-logic.us/" aria-label="Personal Website" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-outlined text-2xl">language</span>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <p class="font-technical-data text-[12px] text-on-surface-variant uppercase tracking-widest">© 2026 Javier (Javi) Carrion. ALL RIGHTS RESERVED.</p>
+                <p class="font-technical-data text-[10px] text-outline uppercase tracking-[0.2em] mt-xs">VISUAL ENCRYPTION ACTIVE</p>
+                <p class="font-technical-data text-[10px] text-on-surface-variant mt-xs max-w-lg mx-auto leading-relaxed mt-4">
+                    "Professional Scrum Master" and "PSM" are trademarks of Scrum.org. "Certified ScrumMaster" and "CSM" are trademarks of Scrum Alliance. SCRUMBLE is an independent educational logic puzzle game and is not affiliated with or endorsed by these organizations.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Scroll Behavior for Sticky Nav
+        let lastScrollTop = 0;
+        const nav = document.getElementById('scroll-nav');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 150) {
+                nav.classList.add('-translate-y-full');
+            } else {
+                nav.classList.remove('-translate-y-full');
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        // Menu Drawer Behavior
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuDrawer = document.getElementById('menu-drawer');
+        const mainContent = document.getElementById('main-content');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function openMenu() {
+            menuDrawer.classList.remove('-translate-x-full');
+            menuDrawer.classList.add('translate-x-0');
+            menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            menuOverlay.classList.add('opacity-100');
+            mainContent.classList.add('opacity-50', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            menuDrawer.classList.remove('translate-x-0');
+            menuDrawer.classList.add('-translate-x-full');
+            menuOverlay.classList.remove('opacity-100');
+            menuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            mainContent.classList.remove('opacity-50', 'pointer-events-none');
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+        
+        // Active state highlighter for menu links
+        const observerOptions = {
+            root: null,
+            rootMargin: '-150px 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    menuLinks.forEach(link => {
+                        link.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                        link.classList.add('text-on-surface-variant');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+                            link.classList.remove('text-on-surface-variant');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section[id]').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- Motion Animation Logic -->
+    <script>
+        // Double check Motion is loaded
+        if (typeof Motion !== 'undefined') {
+            const { animate, inView } = Motion;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // 1. Hero Entrance Animations
+            const logo = document.querySelector('#top img');
+            const title = document.querySelector('#top h1');
+            const subtitle = document.querySelector('#top p');
+            const badge = document.getElementById('product-hunt-badge');
+            const ctas = document.getElementById('hero-ctas');
+
+            if (logo && title && subtitle && badge && ctas) {
+                if (prefersReducedMotion) {
+                    animate([logo, title, subtitle, badge, ctas], { opacity: [0, 1] }, { duration: 0.3 });
+                } else {
+                    // Set initial state
+                    logo.style.opacity = '0';
+                    logo.style.transform = 'translateY(12px)';
+                    title.style.opacity = '0';
+                    title.style.transform = 'translateY(12px)';
+                    subtitle.style.opacity = '0';
+                    subtitle.style.transform = 'translateY(12px)';
+                    badge.style.opacity = '0';
+                    badge.style.transform = 'translateY(12px)';
+                    ctas.style.opacity = '0';
+                    ctas.style.transform = 'translateY(12px)';
+
+                    // Animate sequence
+                    animate(logo, { opacity: 1, y: 0 }, { duration: 0.35, ease: 'easeOut' });
+                    animate(title, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.12, ease: 'easeOut' });
+                    animate(subtitle, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.22, ease: 'easeOut' });
+                    animate(badge, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.28, ease: 'easeOut' });
+                    animate(ctas, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.38, ease: 'easeOut' });
+                }
+            }
+
+            // 2. Feature Cards Entrance (Bento Grid)
+            const cards = document.querySelectorAll('#game-modes > div');
+            if (cards.length > 0) {
+                if (prefersReducedMotion) {
+                    inView('#game-modes', () => {
+                        animate(cards, { opacity: 1 }, { duration: 0.3 });
+                    });
+                } else {
+                    cards.forEach(card => {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(14px)';
+                    });
+                    inView('#game-modes', () => {
+                        cards.forEach((card, index) => {
+                            animate(card, 
+                                { opacity: 1, y: 0 }, 
+                                { duration: 0.35, delay: index * 0.08, ease: 'easeOut' }
+                            );
+                        });
+                    }, { amount: 0.3 });
+                }
+            }
+
+            // 3. Why Built Section (Case File Style)
+            const caseFileSection = document.getElementById('case-file');
+            const caseLabel = document.querySelector('#case-file > div.absolute');
+            const caseParagraphs = document.querySelectorAll('#case-file p');
+            const caseFooter = document.querySelector('#case-file .border-t');
+
+            if (caseFileSection && caseLabel && caseParagraphs.length > 0 && caseFooter) {
+                if (prefersReducedMotion) {
+                    inView('#case-file', () => {
+                        animate(caseFileSection, { opacity: [0, 1] }, { duration: 0.4 });
+                    });
+                } else {
+                    caseFileSection.style.opacity = '0';
+                    caseLabel.style.opacity = '0';
+                    caseLabel.style.transform = 'translateY(-5px)';
+                    caseParagraphs.forEach(p => {
+                        p.style.opacity = '0';
+                        p.style.transform = 'translateY(10px)';
+                    });
+                    caseFooter.style.opacity = '0';
+                    caseFooter.style.transform = 'translateY(5px)';
+
+                    inView('#case-file', () => {
+                        animate(caseFileSection, { opacity: 1 }, { duration: 0.35 });
+                        animate(caseLabel, { opacity: 1, y: 0 }, { duration: 0.25, delay: 0.1 });
+                        caseParagraphs.forEach((p, index) => {
+                            animate(p, { opacity: 1, y: 0 }, { duration: 0.3, delay: 0.2 + (index * 0.1) });
+                        });
+                        animate(caseFooter, { opacity: 1, y: 0 }, { duration: 0.3, delay: 0.45 });
+                    }, { amount: 0.3 });
+                }
+            }
+
+            // 4. Technical Specs Checklist Spans
+            const specSpans = document.querySelectorAll('#tech-specs-tags > span');
+            if (specSpans.length > 0) {
+                if (prefersReducedMotion) {
+                    inView('#tech-specs-tags', () => {
+                        animate(specSpans, { opacity: 1 }, { duration: 0.3 });
+                    });
+                } else {
+                    specSpans.forEach(span => {
+                        span.style.opacity = '0';
+                        span.style.transform = 'translateY(10px)';
+                    });
+                    inView('#tech-specs-tags', () => {
+                        specSpans.forEach((span, index) => {
+                            animate(span, 
+                                { opacity: 1, y: 0 }, 
+                                { duration: 0.3, delay: index * 0.05, ease: 'easeOut' }
+                            );
+                        });
+                    }, { amount: 0.3 });
+                }
+            }
+
+            // 5. Screenshot Gallery (Evidence Photo style)
+            const screenshots = document.querySelectorAll('#screenshot-grid > div');
+            if (screenshots.length > 0) {
+                if (prefersReducedMotion) {
+                    inView('#screenshot-grid', () => {
+                        animate(screenshots, { opacity: 1 }, { duration: 0.3 });
+                    });
+                } else {
+                    screenshots.forEach((screen, index) => {
+                        screen.style.opacity = '0';
+                        screen.style.transform = `translateY(16px) rotate(${index % 2 === 0 ? -1 : 1}deg)`;
+                    });
+                    inView('#screenshot-grid', () => {
+                        screenshots.forEach((screen, index) => {
+                            animate(screen, 
+                                { opacity: 1, y: 0, rotate: 0 }, 
+                                { duration: 0.4, delay: index * 0.08, ease: 'easeOut' }
+                            );
+                        });
+                    }, { amount: 0.2 });
+                }
+            }
+
+            // 6. Prep Pack Section
+            const prepTitle = document.getElementById('prep-pack-title');
+            const prepDesc = document.getElementById('prep-pack-desc');
+            const prepLockRow = document.getElementById('prep-pack-lock-row');
+            const prepLockIcon = document.getElementById('prep-pack-lock');
+            const prepPurchaseInfo = document.getElementById('prep-pack-purchase-info');
+            const prepCta = document.getElementById('prep-pack-cta');
+
+            if (prepTitle && prepDesc && prepLockRow && prepLockIcon && prepPurchaseInfo && prepCta) {
+                if (prefersReducedMotion) {
+                    inView('#prep-pack', () => {
+                        animate([prepTitle, prepDesc, prepLockRow, prepPurchaseInfo, prepCta], { opacity: [0, 1] }, { duration: 0.4 });
+                    });
+                } else {
+                    prepTitle.style.opacity = '0';
+                    prepTitle.style.transform = 'translateY(12px)';
+                    prepDesc.style.opacity = '0';
+                    prepDesc.style.transform = 'translateY(10px)';
+                    prepLockRow.style.opacity = '0';
+                    prepPurchaseInfo.style.opacity = '0';
+                    prepCta.style.opacity = '0';
+                    prepCta.style.transform = 'translateY(10px)';
+
+                    inView('#prep-pack', () => {
+                        animate(prepTitle, { opacity: 1, y: 0 }, { duration: 0.35, ease: 'easeOut' });
+                        animate(prepDesc, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.1, ease: 'easeOut' });
+                        animate(prepLockRow, { opacity: 1 }, { duration: 0.3, delay: 0.25 });
+                        animate(prepLockIcon, { scale: [1, 1.3, 1] }, { duration: 0.4, delay: 0.35, ease: 'easeInOut' });
+                        animate(prepPurchaseInfo, { opacity: 1 }, { duration: 0.3, delay: 0.35 });
+                        animate(prepCta, { opacity: 1, y: 0 }, { duration: 0.35, delay: 0.45 }).then(() => {
+                            // Mimics the Hero PWA CTA hover transition: scale(1.02) and translateY(-1px)
+                            animate(prepCta, { scale: [1, 1.02, 1], y: [0, -1, 0] }, { duration: 0.4, ease: 'easeInOut' }).then(() => {
+                                // Clear transform style to allow CSS hover/active effects to function properly
+                                prepCta.style.transform = '';
+                            });
+                        });
+                    }, { amount: 0.3 });
+                }
+            }
+
+            // 7. Newsletter Section
+            const newsletterSection = document.getElementById('newsletter');
+            if (newsletterSection) {
+                if (prefersReducedMotion) {
+                    inView('#newsletter', () => {
+                        animate(newsletterSection, { opacity: [0, 1] }, { duration: 0.4 });
+                    });
+                } else {
+                    newsletterSection.style.opacity = '0';
+                    newsletterSection.style.transform = 'translateY(12px)';
+                    inView('#newsletter', () => {
+                        animate(newsletterSection, { opacity: 1, y: 0 }, { duration: 0.4, ease: 'easeOut' });
+                    });
+                }
+            }
+
+            // 8. Footer Section
+            const footerEl = document.getElementById('main-footer');
+            if (footerEl) {
+                if (prefersReducedMotion) {
+                    inView('#main-footer', () => {
+                        animate(footerEl, { opacity: [0, 1] }, { duration: 0.4 });
+                    });
+                } else {
+                    footerEl.style.opacity = '0';
+                    footerEl.style.transform = 'translateY(10px)';
+                    // Use amount: 0.5 threshold to ensure it is half visible before animating
+                    inView('#main-footer', () => {
+                        animate(footerEl, { opacity: 1, y: 0 }, { duration: 0.4, ease: 'easeOut' });
+                    }, { amount: 0.5 });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConnectBanner from '../components/ConnectBanner.astro';
+---
+
+<BaseLayout
+  title="About Me | Javier Carrion (Javi)"
+  description="Software Engineer with over 6 years of professional development and 25+ years in technology. Learn about my technical background, community leadership, and engineering philosophy."
+>
+  <div class="container page-container">
+    <header class="page-header">
+      <div class="badge-gold">About Me</div>
+      <h1 class="page-title">Engineering With Purpose & Fundamentals</h1>
+      <p class="page-lead">
+        I'm Javier Carrion—often known as Javi. I build robust web applications, solve complex software challenges, and help engineering communities grow.
+      </p>
+    </header>
+
+    <div class="about-grid">
+      <!-- Main Story Column -->
+      <div class="about-content">
+        <section class="about-section">
+          <h2>Background & Journey</h2>
+          <p>
+            My journey in technology spans more than 25 years, starting in computer systems, technical customer support, and software quality assurance before transitioning into full-time software engineering over six years ago.
+          </p>
+          <p>
+            This non-traditional foundation gives me a distinctive engineering perspective: I don't just write code to make a feature work today; I write code with a deep appreciation for edge cases, regression prevention, maintainability, and end-user empathy.
+          </p>
+        </section>
+
+        <section class="about-section">
+          <h2>Core Technical Expertise</h2>
+          <p>
+            My day-to-day engineering focuses on scalable frontend architectures and full-stack integration:
+          </p>
+          <ul class="experience-list">
+            <li>
+              <strong>Frontend Engineering:</strong> Angular, TypeScript, modern JavaScript, Vue, HTML5, semantic CSS/Sass, responsive design, and component design systems.
+            </li>
+            <li>
+              <strong>Modern Reactivity:</strong> Early adopter and advocate of fine-grained reactive primitives (Signals) and zone-less architectures.
+            </li>
+            <li>
+              <strong>Backend & Data:</strong> Node.js, Express.js, RESTful API design and maintenance, and MySQL schema migrations.
+            </li>
+            <li>
+              <strong>Quality & Delivery:</strong> Comprehensive unit testing, regression testing, CI/CD pipelines, Git workflows, and Agile/Scrum methodologies (Certified Professional Scrum Master I).
+            </li>
+          </ul>
+        </section>
+
+        <section class="about-section">
+          <h2>Community & Knowledge Sharing</h2>
+          <p>
+            I firmly believe that explaining concepts to others is the greatest way to master them. As an organizer for <strong>Google Developer Groups (GDG) Central Florida</strong> and <strong>GDG Ocala</strong>, and co-organizer of <strong>DevFest Florida</strong>, I regularly present technical sessions on Angular Signals, modern frontend practices, and developer tooling.
+          </p>
+          <p>
+            I also actively mentor junior engineers on clean code, Git practices, software architecture, and practical problem-solving.
+          </p>
+        </section>
+      </div>
+
+      <!-- Sidebar Bento Cards -->
+      <aside class="about-sidebar">
+        <div class="bento-card sidebar-card">
+          <div class="sidebar-avatar-wrapper">
+            <img src="/assets/images/Me.png" alt="Javier Carrion" class="sidebar-avatar" />
+          </div>
+          <h3 class="sidebar-name">Javier Carrion</h3>
+          <p class="sidebar-role">Software Engineer</p>
+          <p class="sidebar-location">📍 Central Florida (Ocala), USA</p>
+
+          <div class="sidebar-divider"></div>
+
+          <div class="sidebar-highlights">
+            <div class="highlight-item">
+              <span class="highlight-num">6+</span>
+              <span class="highlight-label">Years Software Engineering</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-num">25+</span>
+              <span class="highlight-label">Years in Technology</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-num">PSM I</span>
+              <span class="highlight-label">Certified Scrum Master</span>
+            </div>
+          </div>
+
+          <div class="sidebar-divider"></div>
+
+          <div class="sidebar-links">
+            <a href="https://bsky.app/profile/code-vista.bsky.social" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+              Bluesky
+            </a>
+            <a href="https://www.linkedin.com/in/technologic" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/JavaVista" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a href="https://sessionize.com/javier-carrion/" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+              Sessionize
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <ConnectBanner />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-16);
+  }
+
+  .page-header {
+    margin-bottom: var(--space-10);
+    max-width: 800px;
+  }
+
+  .page-title {
+    font-size: var(--fs-3xl);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-lead {
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  @media (min-width: 992px) {
+    .about-grid {
+      grid-template-columns: 1fr 340px;
+    }
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .about-section h2 {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-section p {
+    margin-bottom: var(--space-4);
+    font-size: var(--fs-base);
+    line-height: 1.7;
+  }
+
+  .experience-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .experience-list li {
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--accent-primary);
+    color: var(--text-secondary);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+  }
+
+  .experience-list strong {
+    color: var(--text-primary);
+  }
+
+  /* Sidebar Card */
+  .sidebar-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-6);
+  }
+
+  .sidebar-avatar-wrapper {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-primary);
+    margin-bottom: var(--space-4);
+  }
+
+  .sidebar-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sidebar-name {
+    font-size: var(--fs-lg);
+  }
+
+  .sidebar-role {
+    font-size: var(--fs-sm);
+    color: var(--accent-primary-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .sidebar-location {
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+  }
+
+  .sidebar-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--border-subtle);
+    margin: var(--space-5) 0;
+  }
+
+  .sidebar-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--fs-xs);
+  }
+
+  .highlight-num {
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent-primary-text);
+  }
+
+  .highlight-label {
+    color: var(--text-secondary);
+  }
+
+  .sidebar-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .sidebar-link {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+  }
+
+  .sidebar-link:hover {
+    color: var(--accent-primary-text);
+    border-color: var(--accent-primary);
+  }
+</style>

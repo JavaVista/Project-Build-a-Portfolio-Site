@@ -1,0 +1,232 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  publishDate: Date;
+  readingTime: string;
+  slug: string;
+  coverImage?: string;
+  tags?: string[];
+  variant?: 'featured' | 'compact';
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  publishDate,
+  readingTime,
+  slug,
+  coverImage = '/assets/images/laptop-3190194_640.jpg',
+  tags = [],
+  variant = 'compact',
+} = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+}).format(publishDate);
+---
+
+{variant === 'featured' ? (
+  <article class="bento-card featured-article interactive">
+    <div class="featured-img-col">
+      <img src={coverImage} alt={title} class="article-cover" loading="lazy" />
+    </div>
+
+    <div class="featured-content-col">
+      <div class="article-meta">
+        <span>{formattedDate}</span>
+        <span class="meta-dot">·</span>
+        <span>{readingTime}</span>
+      </div>
+
+      <h3 class="article-title">
+        <a href={`/blog/${slug}/`}>{title}</a>
+      </h3>
+
+      {subtitle && <p class="article-subtitle">{subtitle}</p>}
+
+      <p class="article-desc">{description}</p>
+
+      {tags.length > 0 && (
+        <div class="article-tags">
+          {tags.map((tag) => (
+            <span class="tag-pill">{tag}</span>
+          ))}
+        </div>
+      )}
+
+      <div class="article-cta">
+        <a href={`/blog/${slug}/`} class="card-link">
+          Read More <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </article>
+) : (
+  <article class="bento-card compact-article interactive">
+    <div class="compact-img-col">
+      <img src={coverImage} alt="" class="compact-thumb" loading="lazy" />
+    </div>
+    <div class="compact-content">
+      <h3 class="compact-title">
+        <a href={`/blog/${slug}/`}>{title}</a>
+      </h3>
+      <div class="article-meta compact-meta">
+        <span>{formattedDate}</span>
+        <span class="meta-dot">·</span>
+        <span>{readingTime}</span>
+      </div>
+    </div>
+  </article>
+)}
+
+<style>
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-2);
+    font-family: var(--font-mono);
+  }
+
+  .meta-dot {
+    color: var(--text-tertiary);
+  }
+
+  /* Featured Variant */
+  .featured-article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    height: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .featured-article {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+  }
+
+  .featured-img-col {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .article-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .featured-content-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-title {
+    font-size: var(--fs-lg);
+    line-height: 1.3;
+    margin-bottom: var(--space-1);
+  }
+
+  .article-title a {
+    color: var(--text-primary);
+  }
+
+  .article-title a:hover {
+    color: var(--accent-primary-text);
+  }
+
+  .article-subtitle {
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .article-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .card-link {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--accent-primary-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Compact Variant */
+  .compact-article {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .compact-img-col {
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .compact-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .compact-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1;
+  }
+
+  .compact-title {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .compact-title a {
+    color: var(--text-primary);
+  }
+
+  .compact-title a:hover {
+    color: var(--accent-primary-text);
+  }
+
+  .compact-meta {
+    margin-bottom: 0;
+  }
+</style>
