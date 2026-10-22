@@ -2,26 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-[[redirects]]
-  from = "/blog/your-technical-skills-arent-enough/*"
-  to = "/blog/technical-communication-prep-framework/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/your-technical-skills-arent-enough"
-  to = "/blog/technical-communication-prep-framework/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/building-better-angular-applications-with-signals/*"
-  to = "/blog/angular-control-flow-syntax/"
-  status = 301
-
-[[redirects]]
-  from = "/blog/building-better-angular-applications-with-signals"
-  to = "/blog/angular-control-flow-syntax/"
-  status = 301
-
 [[headers]]
   for = "/*"
   [headers.values]
