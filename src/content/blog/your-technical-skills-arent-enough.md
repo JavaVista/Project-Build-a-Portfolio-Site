@@ -13,7 +13,7 @@ readingTime: "5 min read"
 
 Technical skills are table stakes in software engineering. We spend hundreds of hours mastering frameworks, debugging complex race conditions, and designing scalable system architectures.
 
-Yet, after over two decades in technology—from technical support desks to high-stakes enterprise engineering—one truth consistently stands out: **the most severe engineering failures rarely stem from inadequate code syntax. They stem from broken communication.**
+Yet, after over two decades in technology, from technical support desks to high-stakes enterprise engineering, one truth consistently stands out: **the most severe engineering failures rarely stem from inadequate code syntax. They stem from broken communication.**
 
 ### The Reality of Pressure in Engineering
 

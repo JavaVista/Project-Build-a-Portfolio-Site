@@ -2,7 +2,7 @@
 title: "Fine Grained Reactivity with Signals"
 event: "Orlando Code Camp 2025"
 date: "March 2025"
-description: "A deep exploration of fine-grained reactivity and signals across Angular, Vue, and SolidJS—explaining how signals modernize UI state management, eliminate change detection bottlenecks, and complement RxJS."
+description: "A deep exploration of fine-grained reactivity and signals across Angular, Vue, and SolidJS, explaining how signals modernize UI state management, eliminate change detection bottlenecks, and complement RxJS."
 youtubeId: "9yt-JpxuZvE"
 channelName: "GDG Central Florida"
 role: "Speaker & Author"

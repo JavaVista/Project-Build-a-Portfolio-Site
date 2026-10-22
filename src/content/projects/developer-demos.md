@@ -13,7 +13,7 @@ repoLabel: "Explore Repositories"
 
 ## About Developer Demos & Open-Source Repositories
 
-With over 170 public repositories on GitHub, my open-source work spans multiple eras and languages across the software engineering spectrum—from modern Angular and reactive programming architectures to Python utilities, Ember.js projects, and web standards experiments.
+With over 170 public repositories on GitHub, my open-source work spans multiple eras and languages across the software engineering spectrum, ranging from modern Angular and reactive programming architectures to Python utilities, Ember.js projects, and web standards experiments.
 
 ### Portfolio Highlights
 * **Modern Frontend & Reactivity:** Fine-grained reactivity patterns with Angular Signals, Stencil Web Components, and accessible component libraries.

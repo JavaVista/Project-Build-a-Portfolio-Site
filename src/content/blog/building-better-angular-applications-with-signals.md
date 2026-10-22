@@ -43,4 +43,4 @@ export class CounterComponent {
 }
 ```
 
-Signals don't replace RxJS—they complement it. By using Signals for UI state and RxJS for asynchronous event pipelines via `toSignal()` and `toObservable()`, we unlock the best of both worlds.
+Signals don't replace RxJS; they complement it. By using Signals for UI state and RxJS for asynchronous event pipelines via `toSignal()` and `toObservable()`, we unlock the best of both worlds.

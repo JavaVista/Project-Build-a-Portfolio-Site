@@ -17,7 +17,7 @@ However, generating code quickly is not the same as engineering maintainable sof
 
 ### The Amplification Factor of AI
 
-AI models reflect the training data they ingest—including anti-patterns, missing boundary checks, and subtle concurrency vulnerabilities. When an engineer blindly accepts suggestions without understanding the underlying mechanics, technical debt compounds exponentially.
+AI models reflect the training data they ingest, including anti-patterns, missing boundary checks, and subtle concurrency vulnerabilities. When an engineer blindly accepts suggestions without understanding the underlying mechanics, technical debt compounds exponentially.
 
 ### Craftsmanship Principles That Endure
 

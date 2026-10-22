@@ -1,5 +1,5 @@
 ---
-title: "Bender's Arm — Team Zero Demo"
+title: "Bender's Arm: Team Zero Demo"
 event: "TADHack-mini Orlando at Avaya ENGAGE"
 date: "December 2021"
 description: "Presentation and live demonstration of Team Zero's hybrid-world collaboration solution combining telecommunication APIs, hardware automation, and cloud messaging."
