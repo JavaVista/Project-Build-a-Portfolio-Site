@@ -18,6 +18,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
 }).format(post.data.publishDate);
 ---
 
@@ -302,6 +303,43 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 
   .post-body :global(strong) {
     color: var(--text-primary);
+  }
+
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-8) 0;
+    font-size: var(--fs-sm);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .post-body :global(th) {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 2px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+
+  .post-body :global(td) {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .post-body :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .post-body :global(tr:hover td) {
+    background-color: var(--bg-surface-elevated);
   }
 
   .post-body :global(.infographic-container) {

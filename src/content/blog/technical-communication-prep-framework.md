@@ -3,7 +3,7 @@ title: "Your Technical Skills Aren't Enough"
 seoTitle: "Technical Communication for Developers: Using the PREP Framework Under Pressure"
 subtitle: "Learning to Communicate Under Pressure"
 description: "Learn how the PREP framework helps developers communicate clearly in meetings, demos, interviews, presentations, and unexpected conversations."
-publishDate: 2024-10-15
+publishDate: 2026-10-22
 author: "Javier Carrion"
 coverImage: "/assets/images/technical-communication-cover.jpg"
 coverAlt: "Technical Communication for Developers: Using the PREP Framework Under Pressure"

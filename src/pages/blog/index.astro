@@ -42,6 +42,7 @@ const allTags = Array.from(new Set(publishedPosts.flatMap((p) => p.data.tags)));
           month: 'short',
           day: 'numeric',
           year: 'numeric',
+          timeZone: 'UTC',
         }).format(post.data.publishDate);
 
         return (
