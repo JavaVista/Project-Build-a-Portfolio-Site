@@ -342,32 +342,62 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     background-color: var(--bg-surface-elevated);
   }
 
+  /* Article Media, Figures & Images */
+  .post-body :global(img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .post-body :global(figure),
+  .post-body :global(.article-figure),
+  .post-body :global(.media-card),
   .post-body :global(.infographic-container) {
+    width: 100%;
+    max-width: 100%;
     margin: var(--space-8) 0;
-    padding: var(--space-4);
+    padding: var(--space-3);
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
+    box-sizing: border-box;
+    overflow: hidden;
     text-align: center;
   }
 
+  .post-body :global(figure img),
+  .post-body :global(.article-figure img),
+  .post-body :global(.media-card img),
   .post-body :global(.infographic-image) {
+    width: 100%;
     max-width: 100%;
     height: auto;
+    max-height: 560px;
+    object-fit: contain;
     border-radius: var(--radius-md);
-    display: inline-block;
+    margin: 0 auto;
+    display: block;
   }
 
+  .post-body :global(figcaption),
+  .post-body :global(.media-caption),
   .post-body :global(.infographic-caption) {
-    margin-top: var(--space-3);
-    margin-bottom: 0;
     font-size: var(--fs-sm);
     color: var(--text-tertiary);
+    text-align: center;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-2);
+    font-style: italic;
+    line-height: 1.5;
   }
 
+  .post-body :global(figcaption a),
+  .post-body :global(.media-caption a),
   .post-body :global(.infographic-caption a) {
     color: var(--accent-primary-text);
-    font-weight: 600;
+    text-decoration: underline;
+    font-weight: 500;
   }
 
   .post-body :global(.two-column-media) {
@@ -389,31 +419,6 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     object-fit: cover;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-subtle);
-  }
-
-  .post-body :global(.media-card) {
-    margin: var(--space-8) 0;
-    padding: var(--space-3);
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    text-align: center;
-  }
-
-  .post-body :global(.media-card img) {
-    width: 100%;
-    max-height: 520px;
-    object-fit: contain;
-    border-radius: var(--radius-md);
-  }
-
-  .post-body :global(.media-caption) {
-    font-size: var(--fs-sm);
-    color: var(--text-tertiary);
-    text-align: center;
-    margin-top: var(--space-2);
-    margin-bottom: var(--space-6);
-    font-style: italic;
   }
 
   /* Post Footer */

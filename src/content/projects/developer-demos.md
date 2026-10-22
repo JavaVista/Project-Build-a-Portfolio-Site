@@ -2,7 +2,7 @@
 title: "Developer Demos & Open-Source Repositories"
 description: "A diverse portfolio of 170+ public repositories, code examples, and open-source contributions across Angular, TypeScript, Python, Ember.js, and modern web tooling."
 featured: true
-order: 3
+order: 4
 coverImage: "/assets/images/laptop-3190194_640.jpg"
 tags: ["Angular", "TypeScript", "Python", "Ember.js", "Web Standards"]
 demoUrl: "https://github.com/JavaVista"
