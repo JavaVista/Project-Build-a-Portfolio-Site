@@ -22,7 +22,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 ---
 
 <BaseLayout
-  title={`${post.data.title} | Javier Carrion`}
+  title={`${post.data.seoTitle || post.data.title} | Javier Carrion`}
   description={post.data.description}
   ogImage={post.data.coverImage}
   article={true}
@@ -57,13 +57,20 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     </header>
 
     {post.data.coverImage && (
-      <div class="post-cover-wrapper">
-        <img
-          src={post.data.coverImage}
-          alt={post.data.coverAlt || post.data.title}
-          class="post-cover-img"
-        />
-      </div>
+      <figure class="post-cover-wrapper">
+        <div class="post-cover-media">
+          <img
+            src={post.data.coverImage}
+            alt={post.data.coverAlt || post.data.title}
+            class="post-cover-img"
+          />
+        </div>
+        {post.data.coverCaption && (
+          <figcaption class="post-cover-caption">
+            {post.data.coverCaption}
+          </figcaption>
+        )}
+      </figure>
     )}
 
     <!-- Markdown Content Body -->
@@ -98,6 +105,23 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 
     <ConnectBanner />
   </article>
+
+  <script>
+    function setupExternalLinks() {
+      const postBody = document.querySelector('.post-body');
+      if (!postBody) return;
+      postBody.querySelectorAll('a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname)) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
+    }
+
+    setupExternalLinks();
+    document.addEventListener('astro:after-swap', setupExternalLinks);
+  </script>
 </BaseLayout>
 
 <style>
@@ -164,10 +188,14 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 
   .post-cover-wrapper {
     width: 100%;
+    margin: 0 0 var(--space-10) 0;
+  }
+
+  .post-cover-media {
+    width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    margin-bottom: var(--space-10);
     border: 1px solid var(--border-subtle);
   }
 
@@ -175,6 +203,15 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .post-cover-caption {
+    margin-top: var(--space-3);
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+    text-align: center;
+    line-height: 1.5;
+    font-style: italic;
   }
 
   /* Post Body Markdown Typography */
@@ -213,6 +250,17 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     margin-bottom: var(--space-2);
   }
 
+  .post-body :global(a) {
+    color: var(--accent-primary-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+  }
+
+  .post-body :global(a:hover) {
+    color: var(--accent-secondary);
+  }
+
   .post-body :global(blockquote) {
     border-left: 3px solid var(--accent-primary);
     padding-left: var(--space-4);
@@ -243,6 +291,45 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     background: transparent;
     border: none;
     padding: 0;
+  }
+
+  .post-body :global(hr) {
+    border: none;
+    height: 1px;
+    background-color: var(--border-subtle);
+    margin: var(--space-10) 0;
+  }
+
+  .post-body :global(strong) {
+    color: var(--text-primary);
+  }
+
+  .post-body :global(.infographic-container) {
+    margin: var(--space-8) 0;
+    padding: var(--space-4);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    text-align: center;
+  }
+
+  .post-body :global(.infographic-image) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: inline-block;
+  }
+
+  .post-body :global(.infographic-caption) {
+    margin-top: var(--space-3);
+    margin-bottom: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+  }
+
+  .post-body :global(.infographic-caption a) {
+    color: var(--accent-primary-text);
+    font-weight: 600;
   }
 
   /* Post Footer */

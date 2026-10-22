@@ -4,6 +4,7 @@ const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),
     subtitle: z.string().optional(),
     description: z.string(),
     publishDate: z.coerce.date(),
@@ -11,6 +12,7 @@ const blogCollection = defineCollection({
     author: z.string().default('Javier Carrion'),
     coverImage: z.string().optional(),
     coverAlt: z.string().optional(),
+    coverCaption: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     readingTime: z.string().default('5 min read'),
