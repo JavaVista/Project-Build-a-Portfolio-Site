@@ -5,10 +5,21 @@ interface Props {
   coverImage: string;
   tags: string[];
   demoUrl?: string;
+  demoLabel?: string;
   repoUrl?: string;
+  repoLabel?: string;
 }
 
-const { title, description, coverImage, tags, demoUrl, repoUrl } = Astro.props;
+const {
+  title,
+  description,
+  coverImage,
+  tags,
+  demoUrl,
+  demoLabel = 'Live Demo',
+  repoUrl,
+  repoLabel = 'View Code',
+} = Astro.props;
 const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumble');
 ---
 
@@ -42,12 +53,12 @@ const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumb
     <div class="card-footer">
       {demoUrl && (
         <a href={demoUrl} class="card-link" target={demoUrl.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer">
-          Live Demo <span aria-hidden="true">&rarr;</span>
+          {demoLabel} <span aria-hidden="true">&rarr;</span>
         </a>
       )}
       {repoUrl && (
         <a href={repoUrl} class="card-link secondary" target="_blank" rel="noopener noreferrer">
-          View Code <span aria-hidden="true">&rarr;</span>
+          {repoLabel} <span aria-hidden="true">&rarr;</span>
         </a>
       )}
     </div>

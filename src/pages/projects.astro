@@ -29,7 +29,9 @@ const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
           coverImage={project.data.coverImage}
           tags={project.data.tags}
           demoUrl={project.data.demoUrl}
+          demoLabel={project.data.demoLabel}
           repoUrl={project.data.repoUrl}
+          repoLabel={project.data.repoLabel}
         />
       ))}
     </div>
