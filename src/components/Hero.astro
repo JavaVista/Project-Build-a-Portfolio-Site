@@ -159,28 +159,34 @@
   /* Option A: Laptop background with subtle vignette overlay */
   .hero-bg-overlay {
     position: absolute;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 65%;
     pointer-events: none;
     z-index: 0;
     background-image:
-      radial-gradient(ellipse at 85% 50%, rgba(11, 15, 23, 0.4) 0%, var(--bg-primary) 70%),
+      linear-gradient(to right, var(--bg-primary) 0%, rgba(11, 15, 23, 0.5) 30%, rgba(11, 15, 23, 0.15) 100%),
+      linear-gradient(to bottom, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%),
       url('/assets/images/laptop-3190194_1280.jpg');
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center right;
     background-size: cover;
-    opacity: 0.12;
+    opacity: 0.45;
   }
 
   html[data-theme="light"] .hero-bg-overlay {
     background-image:
-      radial-gradient(ellipse at 85% 50%, rgba(248, 250, 252, 0.75) 0%, var(--bg-primary) 75%),
+      linear-gradient(to right, var(--bg-primary) 0%, rgba(248, 250, 252, 0.6) 35%, rgba(248, 250, 252, 0.2) 100%),
+      linear-gradient(to bottom, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%),
       url('/assets/images/laptop-3190194_1280.jpg');
-    opacity: 0.08;
+    opacity: 0.3;
   }
 
   @media (max-width: 768px) {
     .hero-bg-overlay {
-      opacity: 0.04;
+      width: 100%;
+      opacity: 0.15;
     }
   }
 
@@ -274,11 +280,18 @@
   }
 
   .hero-showcase-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
+    background-color: rgba(19, 25, 38, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: var(--radius-xl);
     padding: var(--space-6);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  }
+
+  html[data-theme="light"] .hero-showcase-card {
+    background-color: rgba(255, 255, 255, 0.82);
+    border-color: rgba(226, 232, 240, 0.9);
   }
 
   .showcase-header {

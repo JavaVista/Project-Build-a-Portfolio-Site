@@ -1,10 +1,10 @@
 ---
 title: "SCRUMBLE"
-description: "A word puzzle and logic deduction game built with modern web technologies for Scrum Master and PSM I exam preparation."
+description: "Interactive single-player logic puzzle and deduction game designed for Scrum Master and PSM I exam preparation, available on Google Play and as an installable PWA."
 featured: true
 order: 1
 coverImage: "/assets/images/SCRUMBLE_game.png"
-tags: ["TypeScript", "Game Development", "PWA"]
+tags: ["Angular 21", "Ionic 8", "TypeScript", "PWA", "Vitest", "Firebase"]
 demoUrl: "/scrumble/"
 repoUrl: "https://github.com/JavaVista/Project-Build-a-Portfolio-Site"
 ---
@@ -12,6 +12,14 @@ repoUrl: "https://github.com/JavaVista/Project-Build-a-Portfolio-Site"
 ## About SCRUMBLE
 
 SCRUMBLE is a single-player logic puzzle game that teaches the Scrum framework through deductive reasoning instead of dry flashcard memorization.
+
+### Tech Stack
+* **Framework:** Angular 21 (Standalone Components)
+* **UI Components:** Ionic Framework 8
+* **Styling:** Custom SCSS + Ionic CSS Variables (Light & Dark theme support)
+* **Testing:** Vitest unit and regression testing suite
+* **Hosting & Delivery:** Firebase Hosting & Progressive Web App (PWA)
+* **Distribution:** Available on Google Play and as an installable PWA
 
 ### Problem
 Aspiring Scrum Masters and developers preparing for PSM I and CSM certifications frequently struggle with the precise terminology, commitments, and accountabilities described in the Scrum Guide.

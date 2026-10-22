@@ -1,10 +1,10 @@
 ---
-title: "Developer Demos & Open-Source Tools"
-description: "A collection of practical examples, architectural patterns, and reusable tools for modern web development and community learning."
+title: "Developer Demos & Tools"
+description: "A curated collection of practical examples, architectural patterns, and reusable tools for modern web development, Angular Signals, and community workshops."
 featured: true
 order: 3
-coverImage: "/assets/images/HTMLFlexboxCard.jpg"
-tags: ["Angular", "TypeScript", "Web Components"]
+coverImage: "/assets/images/laptop-3190194_640.jpg"
+tags: ["Angular", "TypeScript", "Signals", "Web Components"]
 demoUrl: "https://github.com/JavaVista"
 repoUrl: "https://github.com/JavaVista"
 ---
@@ -16,4 +16,4 @@ A curated portfolio of engineering examples demonstrating Angular Signals, Stenc
 ### Highlights
 * Demonstrations of fine-grained reactivity in Angular without zone.js.
 * Accessible component prototypes built with web standards and semantic HTML.
-* Code repositories accompanying technical presentations and workshops.
+* Code repositories accompanying technical presentations and community workshops.
