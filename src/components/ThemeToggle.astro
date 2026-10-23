@@ -4,7 +4,6 @@
 
 <button
   type="button"
-  id="theme-toggle"
   class="theme-toggle-btn"
   aria-label="Toggle light or dark theme"
   title="Toggle light or dark theme"
@@ -54,36 +53,49 @@
     display: inline-flex;
   }
 
-  /* Default (Dark Mode): Show sun to switch to light */
-  html:not([data-theme="light"]) .icon-moon {
+  /* Light Mode (Default): Show moon icon to switch to dark */
+  html:not([data-theme="dark"]) .icon-sun {
     display: none;
   }
-  html:not([data-theme="light"]) .icon-sun {
+  html:not([data-theme="dark"]) .icon-moon {
     display: inline-flex;
   }
 
-  /* Light Mode: Show moon to switch to dark */
-  html[data-theme="light"] .icon-sun {
+  /* Dark Mode: Show sun icon to switch to light */
+  html[data-theme="dark"] .icon-moon {
     display: none;
   }
-  html[data-theme="light"] .icon-moon {
+  html[data-theme="dark"] .icon-sun {
     display: inline-flex;
   }
 </style>
 
 <script is:inline>
-  function setupThemeToggle() {
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
+  (function() {
+    function setupThemeToggle() {
+      const buttons = document.querySelectorAll('.theme-toggle-btn');
+      buttons.forEach(function(btn) {
+        if (btn.hasAttribute('data-theme-bound')) return;
+        btn.setAttribute('data-theme-bound', 'true');
 
-    btn.addEventListener('click', () => {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const newTheme = isLight ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
-  }
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          try {
+            localStorage.setItem('theme', newTheme);
+          } catch (_) {}
+        });
+      });
+    }
 
-  setupThemeToggle();
-  document.addEventListener('astro:after-swap', setupThemeToggle);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupThemeToggle);
+    } else {
+      setupThemeToggle();
+    }
+    document.addEventListener('astro:after-swap', setupThemeToggle);
+    document.addEventListener('astro:page-load', setupThemeToggle);
+  })();
 </script>
