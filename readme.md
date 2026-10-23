@@ -164,3 +164,21 @@ The project includes a `netlify.toml` file configured for static output:
 ```
 
 Netlify will automatically build the site from the repository and deploy the `dist/` folder to the global edge network without affecting existing routes or SCRUMBLE URLs.
+
+---
+
+## Contact & Connect
+
+* **Website:** [https://techno-logic.us/](https://techno-logic.us/)
+* **LinkedIn:** [linkedin.com/in/technologic](https://www.linkedin.com/in/technologic)
+* **GitHub:** [github.com/JavaVista](https://github.com/JavaVista)
+* **Bluesky:** [@code-vista.bsky.social](https://bsky.app/profile/code-vista.bsky.social)
+* **YouTube:** [@JavierCarrion](https://www.youtube.com/@JavierCarrion)
+
+---
+
+## License
+
+Distributed under the MIT License. See [LICENSE.md](LICENSE.md) for more information.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)

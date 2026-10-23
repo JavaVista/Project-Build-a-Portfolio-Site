@@ -5,7 +5,7 @@ import ConnectBanner from '../components/ConnectBanner.astro';
 
 <BaseLayout
   title="Resume & Experience | Javier Carrion (Javi)"
-  description="Professional software engineering resume of Javier Carrion. 6+ years professional web development, 25+ years in technology, Angular, TypeScript, Node.js, and PSM I certified."
+  description="Professional software engineering resume of Javier Carrion. Bilingual software engineer with 6+ years professional web development, 25+ years in technology, Angular, TypeScript, Node.js, and PSM I certified."
 >
   <div class="container page-container">
     <header class="resume-header">
@@ -21,13 +21,21 @@ import ConnectBanner from '../components/ConnectBanner.astro';
       </div>
 
       <div class="resume-actions">
+        <button type="button" class="btn btn-secondary print-btn" onclick="window.print()" title="Print or save as PDF">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect width="12" height="8" x="6" y="14"></rect>
+          </svg>
+          <span>Print</span>
+        </button>
         <a href="/resume.pdf" class="btn btn-primary download-btn" download="Javier_Carrion_Resume.pdf">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Download PDF Resume</span>
+          <span>Download PDF</span>
         </a>
       </div>
     </header>
@@ -37,7 +45,7 @@ import ConnectBanner from '../components/ConnectBanner.astro';
       <h2 class="section-heading">Professional Summary</h2>
       <div class="bento-card resume-card">
         <p>
-          Software engineer with 6+ years of professional web application development experience and 25+ years across technology, quality assurance, and systems development. Builds and maintains enterprise applications using Angular, TypeScript, Vue, Node.js, Express.js, MySQL, and PostgreSQL. Brings a strong testing mindset, deep experience delivering reliable changes through QA to production, and a proven track record of mentorship, technical communication, and cross-functional team leadership.
+          Bilingual software engineer (English & Spanish) with 6+ years of professional web application development experience and 25+ years across technology, quality assurance, and systems development. Builds and maintains enterprise applications using Angular, TypeScript, Vue, Node.js, Express.js, MySQL, and PostgreSQL. Brings a strong testing mindset, deep experience delivering reliable changes through QA to production, and a proven track record of mentorship, technical communication, and cross-functional team leadership.
         </p>
       </div>
     </section>
@@ -85,6 +93,14 @@ import ConnectBanner from '../components/ConnectBanner.astro';
             <span class="tag-pill">Test Planning</span>
             <span class="tag-pill">Unit Testing</span>
             <span class="tag-pill">CI/CD Workflows</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <span class="skill-category-title">Languages:</span>
+          <div class="skill-tags">
+            <span class="tag-pill">English (Fluent)</span>
+            <span class="tag-pill">Spanish (Bilingual / Fluent)</span>
           </div>
         </div>
       </div>
@@ -212,7 +228,7 @@ import ConnectBanner from '../components/ConnectBanner.astro';
   @media (min-width: 768px) {
     .resume-header {
       flex-direction: row;
-      align-items: flex-end;
+      align-items: center;
     }
   }
 
@@ -243,8 +259,12 @@ import ConnectBanner from '../components/ConnectBanner.astro';
     text-decoration: underline;
   }
 
+  .print-btn,
   .download-btn {
-    padding: 0.8rem 1.6rem;
+    padding: 0.75rem 1.4rem;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    line-height: 1;
   }
 
   .resume-section {
@@ -384,5 +404,202 @@ import ConnectBanner from '../components/ConnectBanner.astro';
     font-size: var(--fs-xs);
     color: var(--text-secondary);
     line-height: 1.5;
+  }
+
+  .resume-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .print-btn,
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+  }
+
+  /* ============================================================
+     Print Stylesheet for Browser "Print / Save as PDF"
+     ============================================================ */
+  @media print {
+    /* Hide site chrome, navigation, actions, and decorative elements */
+    :global(header.site-header),
+    :global(footer.site-footer),
+    :global(#email-toast),
+    :global(.skip-to-content),
+    .resume-actions,
+    .badge-gold,
+    :global(.connect-section) {
+      display: none !important;
+    }
+
+    /* Reset background and layout for clean white paper */
+    :global(body),
+    :global(html) {
+      background: #ffffff !important;
+      color: #0f172a !important;
+      font-size: 10.5pt !important;
+    }
+
+    .page-container {
+      padding: 0 !important;
+      max-width: 100% !important;
+      gap: 14pt !important;
+    }
+
+    .resume-header {
+      padding-bottom: 10pt !important;
+      border-bottom: 2pt solid #0f172a !important;
+      margin-bottom: 2pt !important;
+    }
+
+    .resume-title {
+      font-size: 20pt !important;
+      color: #0f172a !important;
+      margin: 0 0 3pt 0 !important;
+    }
+
+    .resume-subtitle {
+      font-size: 11pt !important;
+      color: #1e293b !important;
+      font-weight: 600 !important;
+      margin-bottom: 4pt !important;
+    }
+
+    .resume-meta {
+      font-size: 9pt !important;
+      color: #475569 !important;
+    }
+
+    .resume-meta a {
+      color: #0f172a !important;
+      text-decoration: none !important;
+    }
+
+    .section-heading {
+      font-size: 12pt !important;
+      color: #0f172a !important;
+      font-weight: 700 !important;
+      border-bottom: 1.5pt solid #cbd5e1 !important;
+      padding-bottom: 3pt !important;
+      margin-top: 4pt !important;
+      margin-bottom: 6pt !important;
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* Cards become clean, borderless containers on paper */
+    .bento-card {
+      background: #ffffff !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    .resume-card p {
+      color: #334155 !important;
+      font-size: 9.5pt !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Skills Matrix */
+    .skills-card {
+      gap: 6pt !important;
+    }
+
+    .skill-category-title {
+      font-size: 9.5pt !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+    }
+
+    .tag-pill {
+      font-size: 8.5pt !important;
+      padding: 1.5pt 5pt !important;
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Experience Timeline */
+    .experience-timeline {
+      gap: 10pt !important;
+    }
+
+    .timeline-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding-bottom: 8pt !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      margin-bottom: 6pt !important;
+    }
+
+    .role-title {
+      font-size: 10.5pt !important;
+      font-weight: 700 !important;
+      color: #0f172a !important;
+    }
+
+    .company-name {
+      font-size: 9.5pt !important;
+      color: #334155 !important;
+      font-weight: 600 !important;
+    }
+
+    .role-dates {
+      font-size: 8.5pt !important;
+      color: #64748b !important;
+    }
+
+    .role-bullets {
+      padding-left: 12pt !important;
+      margin-top: 3pt !important;
+      gap: 2pt !important;
+    }
+
+    .role-bullets li {
+      font-size: 9pt !important;
+      color: #334155 !important;
+      line-height: 1.4 !important;
+    }
+
+    /* Education & Certifications */
+    .edu-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8pt !important;
+    }
+
+    .edu-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      border: 1px solid #e2e8f0 !important;
+      padding: 6pt !important;
+      border-radius: 4pt !important;
+    }
+
+    .edu-icon {
+      display: none !important;
+    }
+
+    .edu-title {
+      font-size: 9.5pt !important;
+      color: #0f172a !important;
+    }
+
+    .edu-org {
+      font-size: 8.5pt !important;
+      color: #475569 !important;
+    }
+
+    .edu-desc {
+      font-size: 8pt !important;
+      color: #64748b !important;
+    }
   }
 </style>
