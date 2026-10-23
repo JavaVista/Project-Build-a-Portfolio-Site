@@ -7,6 +7,20 @@ Modern, mobile-first software engineering portfolio and blog built with **Astro 
 
 ---
 
+## Project Evolution & Background
+
+> **Origin:** Originally built in 2018 as a capstone project for the **Udacity Front-End Web Developer Nanodegree**, translating an initial design mockup into a responsive web page.
+
+### 2026 Architectural Modernization
+In 2026, I revisited the repository to completely rebuild and modernize the site from the ground up, reflecting modern web standards and senior engineering practices:
+
+* **Framework Modernization:** Re-architected from legacy static HTML files into **Astro 5 (Static Site Generation)** with strict TypeScript and typed content collections.
+* **Modern CSS System:** Designed a clean token system using Vanilla CSS, CSS Custom Properties, and `clamp()` fluid typography without heavy CSS frameworks.
+* **Performance & Core Web Vitals:** Optimized assets with WebP compression, eager LCP prioritization, and native lazy loading for near-instant page loads.
+* **Expanded Platform:** Scaled into a comprehensive developer hub featuring an engineering blog with RSS syndication, project case studies, conference speaking appearances, and an accessible, print-friendly resume.
+
+---
+
 ## Architecture & Technology Stack
 
 * **Core Framework:** [Astro 5 (SSG)](https://astro.build/) — Zero client-side JavaScript overhead by default.
