@@ -3,10 +3,11 @@ title: "SCRUMBLE"
 description: "Interactive single-player logic puzzle and deduction game designed for Scrum Master and PSM I exam preparation, available on Google Play and as an installable PWA."
 featured: true
 order: 1
-coverImage: "/assets/images/SCRUMBLE_game.png"
+coverImage: "/assets/images/SCRUMBLE_game.webp"
 tags: ["Angular 21", "Ionic 8", "TypeScript", "PWA", "Vitest", "Firebase"]
-demoUrl: "/scrumble/"
-repoUrl: "https://github.com/JavaVista/Project-Build-a-Portfolio-Site"
+demoUrl: "/scrumble/index.html"
+repoUrl: "https://play.google.com/store/apps/details?id=com.scrumble.game&hl=en_US"
+repoLabel: "Google Play"
 ---
 
 ## About SCRUMBLE

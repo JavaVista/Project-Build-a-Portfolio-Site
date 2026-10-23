@@ -42,7 +42,7 @@ const compactPosts = sortedPosts.slice(1, 4);
       </div>
 
       <div class="grid-3">
-        {featuredProjects.map((project) => (
+        {featuredProjects.map((project, index) => (
           <ProjectCard
             title={project.data.title}
             description={project.data.description}
@@ -52,6 +52,8 @@ const compactPosts = sortedPosts.slice(1, 4);
             demoLabel={project.data.demoLabel}
             repoUrl={project.data.repoUrl}
             repoLabel={project.data.repoLabel}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
           />
         ))}
       </div>
@@ -89,6 +91,7 @@ const compactPosts = sortedPosts.slice(1, 4);
           {compactPosts.map((post) => (
             <ArticleCard
               title={post.data.title}
+              subtitle={post.data.subtitle}
               description={post.data.description}
               publishDate={post.data.publishDate}
               readingTime={post.data.readingTime}

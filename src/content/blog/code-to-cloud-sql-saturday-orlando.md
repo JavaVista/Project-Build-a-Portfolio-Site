@@ -5,7 +5,7 @@ subtitle: "Hands-on takeaways from SQL Saturday Orlando: IAM security, serverles
 description: "How 29 developers deployed full-stack Angular SSR apps to Google Cloud Run with IAM-authenticated Cloud SQL at SQL Saturday Orlando 2025."
 publishDate: 2025-10-06
 author: "Javier Carrion"
-coverImage: "/assets/images/code-to-cloud-cover.png"
+coverImage: "/assets/images/code-to-cloud-cover.webp"
 coverAlt: "Code to Cloud: Angular + Cloud Run + Cloud SQL"
 coverCaption: "Hands-on workshop session at SQL Saturday Orlando 2025 exploring modern full-stack cloud deployment."
 tags: ["Google Cloud", "Angular", "Cloud Run", "Cloud SQL", "Public Speaking"]

@@ -8,6 +8,8 @@ interface Props {
   demoLabel?: string;
   repoUrl?: string;
   repoLabel?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'auto' | 'high' | 'low';
 }
 
 const {
@@ -19,13 +21,22 @@ const {
   demoLabel = 'Live Demo',
   repoUrl,
   repoLabel = 'View Code',
+  loading = 'lazy',
+  fetchpriority = 'auto',
 } = Astro.props;
 const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumble');
 ---
 
 <article class="bento-card project-card interactive">
   <div class:list={['card-img-wrapper', { 'is-graphic': isGraphic }]}>
-    <img src={coverImage} alt={title} class="card-img" loading="lazy" />
+    <img
+      src={coverImage}
+      alt={title}
+      class="card-img"
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding={loading === 'eager' ? 'sync' : 'async'}
+    />
   </div>
 
   <div class="card-content">

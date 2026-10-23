@@ -5,7 +5,7 @@ featured: true
 order: 2
 coverImage: "/assets/images/gdg-event-companion.png"
 tags: ["Astro", "Tailwind CSS", "TypeScript", "PWA"]
-demoUrl: "https://github.com/JavaVista/GDG-Event-Companion"
+demoUrl: "https://javavista.github.io/GDG-Event-Companion/"
 repoUrl: "https://github.com/JavaVista/GDG-Event-Companion"
 ---
 

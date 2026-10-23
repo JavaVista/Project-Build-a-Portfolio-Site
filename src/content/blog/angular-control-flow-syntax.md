@@ -5,7 +5,7 @@ subtitle: "A modern, built-in template experience moving beyond structural direc
 description: "Angular introduces a built-in template syntax (@if, @for, @switch) replacing older structural directives for cleaner templates, easier debugging, and better performance."
 publishDate: 2025-08-07
 author: "Javier Carrion"
-coverImage: "/assets/images/angular-control-flow-cover.png"
+coverImage: "/assets/images/angular-control-flow-cover.webp"
 coverAlt: "Angular's New Control Flow Syntax: A Fresh Way to Handle Template Logic"
 coverCaption: "Angular 17 introduced a modern built-in template syntax, replacing asterisk-heavy structural directives with intuitive native blocks."
 tags: ["Angular", "TypeScript", "Frontend Engineering", "Web Development"]
