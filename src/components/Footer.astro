@@ -17,12 +17,22 @@ const currentYear = new Date().getFullYear();
           </a>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/technologic" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/in/technologic"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="linkedin_profile_click"
+          >
             LinkedIn
           </a>
         </li>
         <li>
-          <a href="https://github.com/JavaVista" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/JavaVista"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="github_profile_click"
+          >
             GitHub
           </a>
         </li>
@@ -43,7 +53,11 @@ const currentYear = new Date().getFullYear();
       <p class="copyright">
         &copy; {currentYear} Javier Carrion. All rights reserved.
       </p>
-      <span class="domain">techno-logic.us</span>
+      <div class="footer-meta-links">
+        <a href="/privacy/" class="footer-legal-link">Privacy Policy</a>
+        <span class="meta-dot" aria-hidden="true">·</span>
+        <span class="domain">techno-logic.us</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -132,6 +146,27 @@ const currentYear = new Date().getFullYear();
       flex-direction: row;
       align-items: center;
     }
+  }
+
+  .footer-meta-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .footer-legal-link {
+    color: var(--text-tertiary);
+    transition: color var(--transition-fast);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-legal-link:hover {
+    color: var(--text-primary);
+  }
+
+  .meta-dot {
+    color: var(--text-tertiary);
   }
 
   .domain {

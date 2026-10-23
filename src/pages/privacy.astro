@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ConnectBanner from '../components/ConnectBanner.astro';
+
+const lastUpdated = "October 23, 2026";
+---
+
+<BaseLayout
+  title="Privacy Policy | Javier Carrion (Javi)"
+  description="Privacy policy for techno-logic.us explaining our privacy-conscious, cookieless analytics with Umami Cloud, hosting, and external services."
+>
+  <div class="container page-container">
+    <header class="page-header">
+      <div class="badge-gold">Legal & Transparency</div>
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="page-lead">
+        This website is designed with a strong respect for your privacy. Here is a clear, transparent explanation of how this site operates, what data is collected, and how it is used.
+      </p>
+      <p class="policy-date">Last Updated: {lastUpdated}</p>
+    </header>
+
+    <div class="privacy-content">
+      <!-- Section 1: Overview -->
+      <section class="bento-card policy-section">
+        <h2>1. Overview</h2>
+        <p>
+          This website (<strong>techno-logic.us</strong>) is the personal software engineering portfolio and technical blog of Javier Carrion ("Javi"). Its primary purpose is to showcase engineering projects, share technical articles, and present professional background information.
+        </p>
+        <p>
+          We do not sell products, serve commercial advertising, run marketing remarketing pixels, or monetize user data.
+        </p>
+      </section>
+
+      <!-- Section 2: Analytics via Umami Cloud -->
+      <section class="bento-card policy-section">
+        <h2>2. Website Analytics (Umami Cloud)</h2>
+        <p>
+          We use <strong>Umami Cloud</strong>, an open-source, privacy-first web analytics platform, to understand how visitors discover and interact with the website. This helps improve content relevance, optimize mobile performance, and identify popular articles and projects.
+        </p>
+
+        <h3>No Analytics Cookies</h3>
+        <p>
+          Umami Analytics does not use cookies, local storage identifiers, or cross-site tracking mechanisms. You will not be tracked across different websites, and no persistent identifier is stored on your device for analytics purposes.
+        </p>
+
+        <h3>What Information Is Collected</h3>
+        <p>
+          When you visit the site, Umami processes standard HTTP request metadata to aggregate high-level metrics:
+        </p>
+        <ul class="policy-list">
+          <li><strong>Page Information:</strong> Requested URL, page title, and HTTP referrer (the website you arrived from).</li>
+          <li><strong>Technical Attributes:</strong> Device category (e.g., desktop, mobile), operating system, browser type, browser language, and screen resolution.</li>
+          <li><strong>Geographic Region:</strong> Country and general region, derived from your IP address during request processing.</li>
+        </ul>
+        <p class="policy-note">
+          <em>Note on IP Processing:</em> In accordance with Umami Cloud's architecture, IP addresses are processed in volatile memory to calculate unique visitor metrics and determine approximate geographic location, but raw IP addresses are not stored in the analytics database.
+        </p>
+
+        <h3>Custom Portfolio Interaction Events</h3>
+        <p>
+          To understand which content is most engaging, we measure specific, non-sensitive click actions:
+        </p>
+        <ul class="policy-list">
+          <li><code>resume_download</code>: When a visitor downloads the PDF resume.</li>
+          <li><code>project_demo_click</code>: When a visitor opens an external live project demonstration (captures the project title).</li>
+          <li><code>project_source_click</code>: When a visitor opens a project GitHub repository (captures the project title).</li>
+          <li><code>github_profile_click</code>: When a visitor clicks a link to the author's GitHub profile.</li>
+          <li><code>linkedin_profile_click</code>: When a visitor clicks a link to the author's LinkedIn profile.</li>
+          <li><code>contact_click</code>: When a visitor clicks the contact or email link.</li>
+          <li><code>speaking_link_click</code>: When a visitor opens a Sessionize profile or recorded conference talk link.</li>
+        </ul>
+        <p>
+          These events only record the generic action and public content identifiers (e.g., project name). We do not collect names, email addresses, form entries, or any personal communications through analytics events.
+        </p>
+      </section>
+
+      <!-- Section 3: Third-Party Services -->
+      <section class="bento-card policy-section">
+        <h2>3. Hosting & Third-Party Services</h2>
+        <ul class="policy-list">
+          <li>
+            <strong>Netlify:</strong> This static website is hosted on Netlify's global edge network. Like all web hosts, Netlify's servers temporarily log standard web server access requests (including client IP addresses, user agent, and request timestamps) for security, DDoS protection, and operational reliability.
+          </li>
+          <li>
+            <strong>YouTube / Google Video:</strong> On the Speaking page, video talk previews use privacy-conscious static image facades. A connection to YouTube's servers is only initiated if you explicitly click the thumbnail or "Watch on YouTube" link to play the video.
+          </li>
+          <li>
+            <strong>External Links:</strong> This site links to third-party services including GitHub, LinkedIn, Bluesky, YouTube, Sessionize, and Google Play. Clicking these external links takes you to third-party websites governed by their respective privacy policies.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 4: Data Retention & Security -->
+      <section class="bento-card policy-section">
+        <h2>4. Data Retention & Security</h2>
+        <p>
+          Analytics data collected via Umami Cloud is stored securely within Umami's hosted cloud infrastructure. Because the collected data consists solely of aggregated, cookieless metrics and non-personal event counts, it cannot be used to identify individual natural persons.
+        </p>
+      </section>
+
+      <!-- Section 5: Contact Information -->
+      <section class="bento-card policy-section">
+        <h2>5. Questions & Contact</h2>
+        <p>
+          If you have any questions about this privacy notice or how data is handled on this website, you can reach out directly via:
+        </p>
+        <ul class="policy-list">
+          <li><strong>Email:</strong> <a href="#" data-email-u="amF2aWVyY2Fycmlvbmpy" data-email-d="b3V0bG9vay5jb20=" data-umami-event="contact_click">Contact via Email</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/technologic" target="_blank" rel="noopener noreferrer" data-umami-event="linkedin_profile_click">linkedin.com/in/technologic</a></li>
+          <li><strong>Website:</strong> <a href="https://techno-logic.us">https://techno-logic.us</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <ConnectBanner />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-16);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+
+  .page-header {
+    max-width: 800px;
+  }
+
+  .page-title {
+    font-size: var(--fs-3xl);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-lead {
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-3);
+  }
+
+  .policy-date {
+    font-size: var(--fs-xs);
+    font-family: var(--font-mono);
+    color: var(--text-tertiary);
+  }
+
+  .privacy-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 860px;
+  }
+
+  .policy-section {
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .policy-section h2 {
+    font-size: var(--fs-lg);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .policy-section h3 {
+    font-size: var(--fs-md);
+    color: var(--accent-primary-text);
+    margin-top: var(--space-3);
+  }
+
+  .policy-section p {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .policy-list {
+    padding-left: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-top: var(--space-1);
+    margin-bottom: var(--space-2);
+  }
+
+  .policy-list li {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .policy-list strong {
+    color: var(--text-primary);
+  }
+
+  .policy-note {
+    font-size: var(--fs-xs) !important;
+    color: var(--text-tertiary) !important;
+    background-color: var(--bg-surface-elevated);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--accent-primary);
+  }
+
+  .policy-section a {
+    color: var(--accent-primary-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .policy-section a:hover {
+    color: var(--text-primary);
+  }
+</style>
