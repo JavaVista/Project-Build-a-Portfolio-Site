@@ -1,0 +1,208 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  article?: boolean;
+}
+
+const {
+  title = "Javier Carrion (Javi) | Software Engineer",
+  description = "Software Engineer specializing in Angular, TypeScript, and full-stack web development. Building practical software solutions and sharing knowledge.",
+  ogImage = "/assets/images/laptop-3190194_1280.jpg",
+  article = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://techno-logic.us');
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/notebook-favicon_32.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Non-blocking Theme Initialization Script (Light Mode Default) -->
+    <script is:inline>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (_) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <Header currentPath={Astro.url.pathname} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Email Copy Notification Toast -->
+    <div id="email-toast" class="email-toast" role="status" aria-live="polite">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span id="email-toast-text">Email copied to clipboard!</span>
+    </div>
+
+    <!-- Client-side spam-protected email activation -->
+    <script is:inline>
+      (function() {
+        let toastTimeout = null;
+
+        function showToast(message) {
+          const toast = document.getElementById('email-toast');
+          const toastText = document.getElementById('email-toast-text');
+          if (!toast || !toastText) return;
+          toastText.textContent = message;
+          toast.classList.add('visible');
+          if (toastTimeout) clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(function() {
+            toast.classList.remove('visible');
+          }, 3200);
+        }
+
+        function initObfuscatedEmail() {
+          const emailTriggers = document.querySelectorAll('[data-email-u][data-email-d]');
+          emailTriggers.forEach(function(el) {
+            try {
+              const u = atob(el.getAttribute('data-email-u') || '');
+              const d = atob(el.getAttribute('data-email-d') || '');
+              if (!u || !d) return;
+              const email = u + '@' + d;
+
+              // Populate visible email text if requested (e.g. on resume page)
+              if (el.getAttribute('data-email-text') === 'true') {
+                el.textContent = email;
+              }
+
+              // Set tooltip so hover reveals the email address
+              el.setAttribute('title', 'Email: ' + email + ' (Click to copy / email)');
+              if (el.tagName.toLowerCase() === 'a') {
+                el.setAttribute('href', 'mailto:' + email);
+              }
+
+              // Handle clicks: copy to clipboard + launch mail client
+              el.onclick = function(e) {
+                if (e) e.preventDefault();
+                // Copy to clipboard
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                  navigator.clipboard.writeText(email).then(function() {
+                    showToast('Copied to clipboard: ' + email);
+                  }).catch(function() {
+                    showToast('Email: ' + email);
+                  });
+                } else {
+                  showToast('Email: ' + email);
+                }
+
+                // Launch default mail client
+                setTimeout(function() {
+                  window.location.href = 'mailto:' + email;
+                }, 100);
+              };
+            } catch (_) {}
+          });
+        }
+
+        // Initialize immediately and after Astro client-side page swaps
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initObfuscatedEmail);
+        } else {
+          initObfuscatedEmail();
+        }
+        document.addEventListener('astro:after-swap', initObfuscatedEmail);
+        document.addEventListener('astro:page-load', initObfuscatedEmail);
+      })();
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip-to-content {
+    position: absolute;
+    top: -9999px;
+    left: var(--space-4);
+    background: var(--accent-primary);
+    color: #ffffff;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+    font-weight: 600;
+  }
+
+  .skip-to-content:focus {
+    top: var(--space-4);
+  }
+
+  #main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .email-toast {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-primary);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 0 15px rgba(37, 99, 235, 0.25);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .email-toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .email-toast svg {
+    color: #10b981;
+    flex-shrink: 0;
+  }
+</style>

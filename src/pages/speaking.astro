@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoFacade from '../components/VideoFacade.astro';
+import ConnectBanner from '../components/ConnectBanner.astro';
+import { getCollection } from 'astro:content';
+
+const allTalks = await getCollection('speaking');
+const sortedTalks = allTalks.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Speaking & Community | Javier Carrion (Javi)"
+  description="Technical talks, workshops, and conference presentations by Javier Carrion on Angular Signals, front-end architecture, and GDG community organizing."
+>
+  <div class="container page-container">
+    <header class="page-header">
+      <div class="badge-gold">Speaking & Community</div>
+      <h1 class="page-title">Technical Talks & Developer Education</h1>
+      <p class="page-lead">
+        Sharing practical software engineering knowledge, presenting on modern reactive web architectures, and helping developers grow through active community leadership.
+      </p>
+    </header>
+
+    <!-- Sessionize & Speaker Card Banner -->
+    <section class="bento-card speaker-profile-card" aria-label="Speaker Profile">
+      <div class="speaker-profile-content">
+        <div class="speaker-badge-row">
+          <span class="tag-pill">Conference Speaker</span>
+          <span class="tag-pill">Workshop Instructor</span>
+          <span class="tag-pill">GDG Organizer</span>
+        </div>
+        <h2 class="speaker-profile-title">Invite Me to Speak at Your Event</h2>
+        <p class="speaker-profile-desc">
+          I deliver technical sessions and interactive workshops focused on Angular Signals, fine-grained reactivity, clean code practices, and developer career communication. Check out my Sessionize profile for session abstracts and past events.
+        </p>
+      </div>
+      <div class="speaker-profile-actions">
+        <a
+          href="https://sessionize.com/javier-carrion/"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Sessionize Profile ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- Featured Video Presentations -->
+    <section class="section-block" aria-label="Featured Video Presentations">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Featured Presentations & Demos</h2>
+          <p class="section-subtitle">
+            Curated talks and demos from my personal channel and the GDG Central Florida community.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        {sortedTalks.map((talk) => (
+          <VideoFacade
+            youtubeId={talk.data.youtubeId || ''}
+            title={talk.data.title}
+            event={talk.data.event}
+            date={talk.data.date}
+            channelName={talk.data.channelName}
+            role={talk.data.role}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Community Leadership & Organizing -->
+    <section class="section-block" aria-label="Community Organizing">
+      <h2 class="section-title">Community Leadership</h2>
+      <div class="grid-3">
+        <div class="bento-card community-card">
+          <div class="community-icon" aria-hidden="true">🌐</div>
+          <h3 class="community-name">GDG Central Florida</h3>
+          <p class="community-role">Chapter Organizer</p>
+          <p class="community-desc">
+            Organizing local developer meetups, workshops, and hackathons covering Google Cloud, Angular, Android, and AI technologies.
+          </p>
+          <a href="https://gdg.community.dev/gdg-central-florida/" class="community-link" target="_blank" rel="noopener noreferrer">
+            Visit Community Page &rarr;
+          </a>
+        </div>
+
+        <div class="bento-card community-card">
+          <div class="community-icon" aria-hidden="true">🌴</div>
+          <h3 class="community-name">DevFest Florida</h3>
+          <p class="community-role">Co-Organizer</p>
+          <p class="community-desc">
+            Co-organizing Central Florida's premier community-run technology conference, connecting hundreds of developers, students, and tech leaders.
+          </p>
+          <a href="https://devfestflorida.com/" class="community-link" target="_blank" rel="noopener noreferrer">
+            Visit DevFest Florida &rarr;
+          </a>
+        </div>
+
+        <div class="bento-card community-card">
+          <div class="community-icon" aria-hidden="true">📺</div>
+          <h3 class="community-name">YouTube Channels</h3>
+          <p class="community-role">Content Creator & Contributor</p>
+          <p class="community-desc">
+            Technical discussions and demos hosted on my personal channel and GDG Central Florida archives.
+          </p>
+          <div class="yt-links-row">
+            <a href="https://www.youtube.com/@JavierCarrion" class="community-link" target="_blank" rel="noopener noreferrer">
+              @JavierCarrion &rarr;
+            </a>
+            <a href="https://www.youtube.com/@gdgcentralflorida" class="community-link" target="_blank" rel="noopener noreferrer">
+              @gdgcentralflorida &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ConnectBanner />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-container {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-16);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .page-header {
+    max-width: 800px;
+  }
+
+  .page-title {
+    font-size: var(--fs-3xl);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-lead {
+    font-size: var(--fs-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Speaker Profile Callout */
+  .speaker-profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(37, 99, 235, 0.12) 100%);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
+
+  @media (min-width: 768px) {
+    .speaker-profile-card {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-8);
+    }
+  }
+
+  .speaker-profile-content {
+    max-width: 680px;
+  }
+
+  .speaker-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .speaker-profile-title {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .speaker-profile-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .speaker-profile-actions {
+    flex-shrink: 0;
+  }
+
+  .section-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .section-subtitle {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    margin-top: var(--space-1);
+  }
+
+  /* Community Cards */
+  .community-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .community-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .community-name {
+    font-size: var(--fs-md);
+  }
+
+  .community-role {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--accent-primary-text);
+  }
+
+  .community-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: var(--space-3);
+  }
+
+  .community-link {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--accent-primary-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .community-link:hover {
+    text-decoration: underline;
+  }
+
+  .yt-links-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+</style>

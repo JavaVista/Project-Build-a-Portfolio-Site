@@ -1,0 +1,141 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">TECHNO-LOGIC</span>
+        <span class="footer-tagline">Javier Carrion · Software Engineer</span>
+      </div>
+
+      <ul class="footer-social-links" aria-label="Social and Feed Links">
+        <li>
+          <a href="https://bsky.app/profile/code-vista.bsky.social" target="_blank" rel="noopener noreferrer">
+            Bluesky
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/technologic" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/JavaVista" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@JavierCarrion" target="_blank" rel="noopener noreferrer">
+            YouTube
+          </a>
+        </li>
+        <li>
+          <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+            Blog RSS
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {currentYear} Javier Carrion. All rights reserved.
+      </p>
+      <span class="domain">techno-logic.us</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
+    margin-top: auto;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer-logo {
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+  }
+
+  .footer-tagline {
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+  }
+
+  .footer-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+    font-size: var(--fs-xs);
+    font-weight: 500;
+  }
+
+  .footer-social-links a {
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-social-links a:hover {
+    color: var(--accent-primary-text);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-subtle);
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .domain {
+    font-family: var(--font-mono);
+    color: var(--text-tertiary);
+  }
+</style>

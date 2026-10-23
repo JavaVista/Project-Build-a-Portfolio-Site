@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import BentoNavCard from '../components/BentoNavCard.astro';
+import ConnectBanner from '../components/ConnectBanner.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch projects
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+// Fetch articles
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const featuredPost = sortedPosts[0];
+const compactPosts = sortedPosts.slice(1, 4);
+---
+
+<BaseLayout
+  title="Javier Carrion (Javi) | Software Engineer"
+  description="Software Engineer specializing in Angular, TypeScript and full-stack web development. Building practical software solutions and sharing knowledge."
+>
+  <!-- Hero Section -->
+  <Hero />
+
+  <div class="container main-content-flow">
+    <!-- Featured Projects Section -->
+    <section id="featured-projects" class="section-block" aria-label="Featured Engineering Projects">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <a href="/projects/" class="section-link">
+          View All Projects <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="grid-3">
+        {featuredProjects.map((project, index) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            coverImage={project.data.coverImage}
+            tags={project.data.tags}
+            demoUrl={project.data.demoUrl}
+            demoLabel={project.data.demoLabel}
+            repoUrl={project.data.repoUrl}
+            repoLabel={project.data.repoLabel}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Latest Writing Section -->
+    <section id="latest-writing" class="section-block" aria-label="Latest Technical Articles">
+      <div class="section-header">
+        <h2 class="section-title">Latest Writing</h2>
+        <a href="/blog/" class="section-link">
+          View All Articles <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="writing-bento-grid">
+        <!-- Left: Large Featured Article -->
+        {featuredPost && (
+          <div class="featured-post-wrapper">
+            <ArticleCard
+              title={featuredPost.data.title}
+              subtitle={featuredPost.data.subtitle}
+              description={featuredPost.data.description}
+              publishDate={featuredPost.data.publishDate}
+              readingTime={featuredPost.data.readingTime}
+              slug={featuredPost.slug}
+              coverImage={featuredPost.data.coverImage}
+              tags={featuredPost.data.tags}
+              variant="featured"
+            />
+          </div>
+        )}
+
+        <!-- Right: 3 Compact Stacked Articles -->
+        <div class="compact-posts-stack">
+          {compactPosts.map((post) => (
+            <ArticleCard
+              title={post.data.title}
+              subtitle={post.data.subtitle}
+              description={post.data.description}
+              publishDate={post.data.publishDate}
+              readingTime={post.data.readingTime}
+              slug={post.slug}
+              coverImage={post.data.coverImage}
+              variant="compact"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-Column Bento Navigation Hub -->
+    <section class="section-block" aria-label="Explore Portfolio Hub">
+      <div class="grid-3">
+        <BentoNavCard
+          title="About Me"
+          description="My background, experience, technical skills, and what drives me."
+          href="/about/"
+          ctaText="Learn More"
+          icon="user"
+        />
+        <BentoNavCard
+          title="Speaking & Community"
+          description="Talks, events, GDG involvement, and community work."
+          href="/speaking/"
+          ctaText="See My Talks"
+          icon="users"
+        />
+        <BentoNavCard
+          title="Resume"
+          description="Download my resume and view my professional experience."
+          href="/resume/"
+          ctaText="Download PDF"
+          icon="document"
+        />
+      </div>
+    </section>
+
+    <!-- Let's Connect Callout -->
+    <ConnectBanner />
+  </div>
+</BaseLayout>
+
+<style>
+  .main-content-flow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  .section-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Latest Writing Bento Layout */
+  .writing-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 992px) {
+    .writing-bento-grid {
+      grid-template-columns: 1.25fr 0.95fr;
+      align-items: stretch;
+    }
+  }
+
+  .featured-post-wrapper {
+    height: 100%;
+  }
+
+  .compact-posts-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    justify-content: space-between;
+  }
+</style>

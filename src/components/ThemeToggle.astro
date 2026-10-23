@@ -1,0 +1,101 @@
+---
+// Accessible Theme Toggle Component
+---
+
+<button
+  type="button"
+  class="theme-toggle-btn"
+  aria-label="Toggle light or dark theme"
+  title="Toggle light or dark theme"
+>
+  <span class="theme-icon icon-sun" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </span>
+  <span class="theme-icon icon-moon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </span>
+</button>
+
+<style>
+  .theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .theme-toggle-btn:hover {
+    border-color: var(--border-medium);
+    transform: scale(1.05);
+  }
+
+  .theme-icon {
+    display: inline-flex;
+  }
+
+  /* Light Mode (Default): Show moon icon to switch to dark */
+  html:not([data-theme="dark"]) .icon-sun {
+    display: none;
+  }
+  html:not([data-theme="dark"]) .icon-moon {
+    display: inline-flex;
+  }
+
+  /* Dark Mode: Show sun icon to switch to light */
+  html[data-theme="dark"] .icon-moon {
+    display: none;
+  }
+  html[data-theme="dark"] .icon-sun {
+    display: inline-flex;
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    function setupThemeToggle() {
+      const buttons = document.querySelectorAll('.theme-toggle-btn');
+      buttons.forEach(function(btn) {
+        if (btn.hasAttribute('data-theme-bound')) return;
+        btn.setAttribute('data-theme-bound', 'true');
+
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          try {
+            localStorage.setItem('theme', newTheme);
+          } catch (_) {}
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupThemeToggle);
+    } else {
+      setupThemeToggle();
+    }
+    document.addEventListener('astro:after-swap', setupThemeToggle);
+    document.addEventListener('astro:page-load', setupThemeToggle);
+  })();
+</script>

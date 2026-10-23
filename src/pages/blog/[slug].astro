@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConnectBanner from '../../components/ConnectBanner.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(post.data.publishDate);
+---
+
+<BaseLayout
+  title={`${post.data.seoTitle || post.data.title} | Javier Carrion`}
+  description={post.data.description}
+  ogImage={post.data.coverImage}
+  article={true}
+>
+  <article class="container post-container">
+    <div class="post-back-nav">
+      <a href="/blog/" class="back-link">
+        <span aria-hidden="true">&larr;</span> Back to All Articles
+      </a>
+    </div>
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime={post.data.publishDate.toISOString()}>{formattedDate}</time>
+        <span class="meta-dot">·</span>
+        <span>{post.data.readingTime}</span>
+        <span class="meta-dot">·</span>
+        <span>By {post.data.author}</span>
+      </div>
+
+      <h1 class="post-title">{post.data.title}</h1>
+
+      {post.data.subtitle && (
+        <p class="post-subtitle">{post.data.subtitle}</p>
+      )}
+
+      <div class="post-tags">
+        {post.data.tags.map((tag) => (
+          <span class="tag-pill">{tag}</span>
+        ))}
+      </div>
+    </header>
+
+    {post.data.coverImage && (
+      <figure class="post-cover-wrapper">
+        <div class="post-cover-media">
+          <img
+            src={post.data.coverImage}
+            alt={post.data.coverAlt || post.data.title}
+            class="post-cover-img"
+          />
+        </div>
+        {post.data.coverCaption && (
+          <figcaption class="post-cover-caption">
+            {post.data.coverCaption}
+          </figcaption>
+        )}
+      </figure>
+    )}
+
+    <!-- Markdown Content Body -->
+    <div class="post-body">
+      <Content />
+    </div>
+
+    <!-- Post Footer -->
+    <footer class="post-footer">
+      <div class="post-share">
+        <p class="share-label">Share this article or connect with Javier:</p>
+        <div class="share-links">
+          <a
+            href={`https://bsky.app/intent/compose?text=${encodeURIComponent(`${post.data.title} by @code-vista.bsky.social https://techno-logic.us/blog/${post.slug}/`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary share-btn"
+          >
+            Post on Bluesky
+          </a>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://techno-logic.us/blog/${post.slug}/`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary share-btn"
+          >
+            Share on LinkedIn
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <ConnectBanner />
+  </article>
+
+  <script>
+    function setupExternalLinks() {
+      const postBody = document.querySelector('.post-body');
+      if (!postBody) return;
+      postBody.querySelectorAll('a').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname)) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        }
+      });
+    }
+
+    setupExternalLinks();
+    document.addEventListener('astro:after-swap', setupExternalLinks);
+  </script>
+</BaseLayout>
+
+<style>
+  .post-container {
+    max-width: 820px;
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-16);
+  }
+
+  .post-back-nav {
+    margin-bottom: var(--space-6);
+  }
+
+  .back-link {
+    font-size: var(--fs-sm);
+    color: var(--accent-primary-text);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: var(--fs-xs);
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+  }
+
+  .meta-dot {
+    color: var(--text-tertiary);
+  }
+
+  .post-title {
+    font-size: var(--fs-3xl);
+    line-height: 1.2;
+    margin-bottom: var(--space-3);
+  }
+
+  .post-subtitle {
+    font-size: var(--fs-lg);
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: var(--space-4);
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .post-cover-wrapper {
+    width: 100%;
+    margin: 0 0 var(--space-10) 0;
+  }
+
+  .post-cover-media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .post-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .post-cover-caption {
+    margin-top: var(--space-3);
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+    text-align: center;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* Post Body Markdown Typography */
+  .post-body {
+    font-size: var(--fs-md);
+    line-height: 1.75;
+    color: var(--text-primary);
+  }
+
+  .post-body :global(h2) {
+    font-size: var(--fs-xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--space-2);
+  }
+
+  .post-body :global(h3) {
+    font-size: var(--fs-lg);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  .post-body :global(p) {
+    margin-bottom: var(--space-6);
+    color: var(--text-secondary);
+  }
+
+  .post-body :global(ul), .post-body :global(ol) {
+    margin-bottom: var(--space-6);
+    padding-left: var(--space-6);
+    color: var(--text-secondary);
+  }
+
+  .post-body :global(li) {
+    margin-bottom: var(--space-2);
+  }
+
+  .post-body :global(a) {
+    color: var(--accent-primary-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+  }
+
+  .post-body :global(a:hover) {
+    color: var(--accent-secondary);
+  }
+
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--accent-primary);
+    padding-left: var(--space-4);
+    margin: var(--space-6) 0;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .post-body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+  }
+
+  .post-body :global(pre) {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  .post-body :global(pre code) {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .post-body :global(hr) {
+    border: none;
+    height: 1px;
+    background-color: var(--border-subtle);
+    margin: var(--space-10) 0;
+  }
+
+  .post-body :global(strong) {
+    color: var(--text-primary);
+  }
+
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-8) 0;
+    font-size: var(--fs-sm);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: block;
+    overflow-x: auto;
+  }
+
+  .post-body :global(th) {
+    background-color: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 2px solid var(--border-subtle);
+    white-space: nowrap;
+  }
+
+  .post-body :global(td) {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .post-body :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .post-body :global(tr:hover td) {
+    background-color: var(--bg-surface-elevated);
+  }
+
+  /* Article Media, Figures & Images */
+  .post-body :global(img) {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-md);
+  }
+
+  .post-body :global(figure),
+  .post-body :global(.article-figure),
+  .post-body :global(.media-card),
+  .post-body :global(.infographic-container) {
+    width: 100%;
+    max-width: 100%;
+    margin: var(--space-8) 0;
+    padding: var(--space-3);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .post-body :global(figure img),
+  .post-body :global(.article-figure img),
+  .post-body :global(.media-card img),
+  .post-body :global(.infographic-image) {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .post-body :global(figcaption),
+  .post-body :global(.media-caption),
+  .post-body :global(.infographic-caption) {
+    font-size: var(--fs-sm);
+    color: var(--text-tertiary);
+    text-align: center;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-2);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .post-body :global(figcaption a),
+  .post-body :global(.media-caption a),
+  .post-body :global(.infographic-caption a) {
+    color: var(--accent-primary-text);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .post-body :global(.two-column-media) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin: var(--space-6) 0 var(--space-2) 0;
+  }
+
+  @media (min-width: 640px) {
+    .post-body :global(.two-column-media) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .post-body :global(.two-column-media img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Post Footer */
+  .post-footer {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .share-label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .share-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .share-btn {
+    font-size: var(--fs-xs);
+    padding: var(--space-2) var(--space-4);
+  }
+</style>

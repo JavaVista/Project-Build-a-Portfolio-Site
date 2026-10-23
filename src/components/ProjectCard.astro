@@ -1,0 +1,192 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  coverImage: string;
+  tags: string[];
+  demoUrl?: string;
+  demoLabel?: string;
+  repoUrl?: string;
+  repoLabel?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'auto' | 'high' | 'low';
+}
+
+const {
+  title,
+  description,
+  coverImage,
+  tags,
+  demoUrl,
+  demoLabel = 'Live Demo',
+  repoUrl,
+  repoLabel = 'View Code',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+} = Astro.props;
+const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumble');
+---
+
+<article class="bento-card project-card interactive">
+  <div class:list={['card-img-wrapper', { 'is-graphic': isGraphic }]}>
+    <img
+      src={coverImage}
+      alt={title}
+      class="card-img"
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding={loading === 'eager' ? 'sync' : 'async'}
+    />
+  </div>
+
+  <div class="card-content">
+    <div class="card-header">
+      <h3 class="card-title">
+        {demoUrl ? (
+          <a href={demoUrl} target={demoUrl.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer">
+            {title}
+            <span class="external-icon" aria-hidden="true">↗</span>
+          </a>
+        ) : (
+          title
+        )}
+      </h3>
+    </div>
+
+    <p class="card-desc">{description}</p>
+
+    <div class="card-tags">
+      {tags.map((tag) => (
+        <span class="tag-pill">{tag}</span>
+      ))}
+    </div>
+
+    <div class="card-footer">
+      {demoUrl && (
+        <a href={demoUrl} class="card-link" target={demoUrl.startsWith('http') ? '_blank' : '_self'} rel="noopener noreferrer">
+          {demoLabel} <span aria-hidden="true">&rarr;</span>
+        </a>
+      )}
+      {repoUrl && (
+        <a href={repoUrl} class="card-link secondary" target="_blank" rel="noopener noreferrer">
+          {repoLabel} <span aria-hidden="true">&rarr;</span>
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .card-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #0b0f17;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform var(--transition-normal);
+  }
+
+  .card-img-wrapper.is-graphic {
+    background-color: #fdfbf7;
+    padding: var(--space-3);
+  }
+
+  .card-img-wrapper.is-graphic .card-img {
+    object-fit: contain;
+  }
+
+  .project-card:hover .card-img {
+    transform: scale(1.03);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--space-5);
+  }
+
+  .card-title {
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-2);
+  }
+
+  .card-title a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-primary);
+  }
+
+  .card-title a:hover {
+    color: var(--accent-primary-text);
+  }
+
+  .external-icon {
+    font-size: 0.85em;
+    color: var(--text-tertiary);
+  }
+
+  .card-desc {
+    font-size: var(--fs-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .card-link {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--accent-primary-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
+  }
+
+  .card-link.secondary {
+    color: var(--text-secondary);
+  }
+
+  .card-link.secondary:hover {
+    color: var(--text-primary);
+  }
+</style>
