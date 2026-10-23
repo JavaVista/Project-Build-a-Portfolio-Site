@@ -28,6 +28,7 @@ In 2026, I revisited the repository to completely rebuild and modernize the site
 * **Styling:** Vanilla CSS with Design Tokens (`src/styles/tokens.css` & `global.css`), CSS Grid, Flexbox, and `clamp()` fluid typography.
 * **Content Collections:** Strict Zod schema validation for blog articles, engineering projects, and speaking presentations.
 * **Theming:** Fast, accessible light/dark theme switch with zero flash of unstyled content (FOUC).
+* **Analytics & Privacy:** Privacy-preserving, cookieless metrics with [Umami Cloud](https://umami.is/) and zero PII collection.
 * **SEO & Syndication:** XML Sitemap (`@astrojs/sitemap`), RSS Feed (`/rss.xml`), canonical URLs, and OpenGraph/Twitter social cards.
 * **Static Assets:** SCRUMBLE logic puzzle game and legacy assets preserved under `public/scrumble/` and `public/assets/`.
 
@@ -36,6 +37,8 @@ In 2026, I revisited the repository to completely rebuild and modernize the site
 ## Directory Structure
 
 ```text
+├── docs/
+│   └── analytics.md         # Umami analytics architecture, taxonomy, & testing
 ├── public/
 │   ├── assets/images/       # Preserved brand and project images
 │   ├── scrumble/            # SCRUMBLE game landing page and legal docs
@@ -66,6 +69,7 @@ In 2026, I revisited the repository to completely rebuild and modernize the site
 │   │   ├── blog/            # Blog index and dynamic [slug].astro routes
 │   │   ├── speaking.astro   # Talks, Sessionize link, and presentations
 │   │   ├── resume.astro     # Interactive resume with PDF download
+│   │   ├── privacy.astro    # Privacy policy & cookieless analytics notice
 │   │   ├── rss.xml.ts       # RSS feed endpoint
 │   │   └── 404.astro        # Custom 404 error page
 │   └── styles/
@@ -165,6 +169,20 @@ featured: true
 order: 4
 ---
 ```
+
+---
+
+## Analytics & Privacy
+
+Techno-Logic uses **Umami Cloud** for privacy-conscious, cookieless web analytics:
+
+* **Zero Tracking Cookies:** Fully compliant with GDPR, CCPA, and PECR without intrusive cookie banners.
+* **No PII Collected:** IP addresses and personal identifiers are never stored or tracked across sites.
+* **Environment Isolation:** Automatically disabled during local development (`localhost`) and Netlify deploy previews via `import.meta.env.PROD` and domain gating.
+* **Declarative Custom Events:** Tracks key interactions (resume downloads, project demo clicks, outbound profile links) using native HTML `data-umami-event` attributes without client-side script overhead.
+* **Documentation & Policy:**
+  * Architecture, setup, and event schema: [`docs/analytics.md`](docs/analytics.md)
+  * Public privacy notice: [`src/pages/privacy.astro`](src/pages/privacy.astro) (live at `/privacy/`)
 
 ---
 

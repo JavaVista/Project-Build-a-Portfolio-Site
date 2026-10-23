@@ -18,6 +18,10 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://techno-logic.us');
+
+// Umami Analytics configuration (Public tracker identifier, safe for client-side inclusion)
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID || 'f06db70a-aad1-4a4c-824d-110fb3a13cf3';
+const isProd = import.meta.env.PROD;
 ---
 
 <!DOCTYPE html>
@@ -45,6 +49,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://techno-l
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Privacy-conscious Umami Analytics (Only runs on production domain, cookieless) -->
+    {isProd && umamiWebsiteId && (
+      <script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id={umamiWebsiteId}
+        data-domains="techno-logic.us,www.techno-logic.us"
+      ></script>
+    )}
 
     <!-- Non-blocking Theme Initialization Script (Light Mode Default) -->
     <script is:inline>

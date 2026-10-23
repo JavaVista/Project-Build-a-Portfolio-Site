@@ -22,6 +22,9 @@ const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
       rel="noopener noreferrer"
       class="play-button-overlay"
       aria-label={`Play ${title} on YouTube`}
+      data-umami-event="speaking_link_click"
+      data-umami-event-title={title}
+      data-umami-event-type="youtube_talk"
     >
       <div class="play-icon-badge" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -39,7 +42,14 @@ const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
     </div>
 
     <h3 class="video-title">
-      <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+      <a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event="speaking_link_click"
+        data-umami-event-title={title}
+        data-umami-event-type="youtube_talk"
+      >
         {title}
         <span class="external-icon" aria-hidden="true">↗</span>
       </a>
@@ -48,7 +58,15 @@ const videoUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
     <p class="video-event">{event} · <span class="role-text">{role}</span></p>
 
     <div class="video-footer">
-      <a href={videoUrl} target="_blank" rel="noopener noreferrer" class="watch-link">
+      <a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="watch-link"
+        data-umami-event="speaking_link_click"
+        data-umami-event-title={title}
+        data-umami-event-type="youtube_talk"
+      >
         Watch on YouTube <span aria-hidden="true">&rarr;</span>
       </a>
     </div>
