@@ -27,82 +27,104 @@ const {
 const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumble');
 ---
 
-<article class="bento-card project-card interactive">
-  <div class:list={['card-img-wrapper', { 'is-graphic': isGraphic }]}>
-    <img
-      src={coverImage}
-      alt={title}
-      class="card-img"
-      loading={loading}
-      fetchpriority={fetchpriority}
-      decoding={loading === 'eager' ? 'sync' : 'async'}
-    />
-  </div>
+<div class="project-card-container">
+  <article class="bento-card project-card interactive">
+    <div class:list={['card-img-wrapper', { 'is-graphic': isGraphic }]}>
+      <img
+        src={coverImage}
+        alt={title}
+        class="card-img"
+        loading={loading}
+        fetchpriority={fetchpriority}
+        decoding={loading === 'eager' ? 'sync' : 'async'}
+      />
+    </div>
 
-  <div class="card-content">
-    <div class="card-header">
-      <h3 class="card-title">
-        {demoUrl ? (
+    <div class="card-content">
+      <div class="card-header">
+        <h3 class="card-title">
+          {demoUrl ? (
+            <a
+              href={demoUrl}
+              target={demoUrl.startsWith('http') ? '_blank' : '_self'}
+              rel="noopener noreferrer"
+              data-umami-event="project_demo_click"
+              data-umami-event-project={title}
+            >
+              {title}
+              <span class="external-icon" aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            title
+          )}
+        </h3>
+      </div>
+
+      <p class="card-desc">{description}</p>
+
+      <div class="card-tags">
+        {tags.map((tag) => (
+          <span class="tag-pill">{tag}</span>
+        ))}
+      </div>
+
+      <div class="card-footer">
+        {demoUrl && (
           <a
             href={demoUrl}
+            class="card-link"
             target={demoUrl.startsWith('http') ? '_blank' : '_self'}
             rel="noopener noreferrer"
             data-umami-event="project_demo_click"
             data-umami-event-project={title}
           >
-            {title}
-            <span class="external-icon" aria-hidden="true">↗</span>
+            {demoLabel} <span aria-hidden="true">&rarr;</span>
           </a>
-        ) : (
-          title
         )}
-      </h3>
+        {repoUrl && (
+          <a
+            href={repoUrl}
+            class="card-link secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-umami-event="project_source_click"
+            data-umami-event-project={title}
+          >
+            {repoLabel} <span aria-hidden="true">&rarr;</span>
+          </a>
+        )}
+      </div>
     </div>
-
-    <p class="card-desc">{description}</p>
-
-    <div class="card-tags">
-      {tags.map((tag) => (
-        <span class="tag-pill">{tag}</span>
-      ))}
-    </div>
-
-    <div class="card-footer">
-      {demoUrl && (
-        <a
-          href={demoUrl}
-          class="card-link"
-          target={demoUrl.startsWith('http') ? '_blank' : '_self'}
-          rel="noopener noreferrer"
-          data-umami-event="project_demo_click"
-          data-umami-event-project={title}
-        >
-          {demoLabel} <span aria-hidden="true">&rarr;</span>
-        </a>
-      )}
-      {repoUrl && (
-        <a
-          href={repoUrl}
-          class="card-link secondary"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-umami-event="project_source_click"
-          data-umami-event-project={title}
-        >
-          {repoLabel} <span aria-hidden="true">&rarr;</span>
-        </a>
-      )}
-    </div>
-  </div>
-</article>
+  </article>
+</div>
 
 <style>
+  .project-card-container {
+    container-type: inline-size;
+    height: 100%;
+    width: 100%;
+  }
+
   .project-card {
     display: flex;
     flex-direction: column;
     padding: 0;
     height: 100%;
     overflow: hidden;
+  }
+
+  @supports (container-type: inline-size) {
+    @container (min-width: 380px) {
+      .card-content {
+        padding: var(--space-6);
+      }
+      .card-title {
+        font-size: var(--fs-lg);
+      }
+      .card-desc {
+        font-size: var(--fs-base);
+      }
+    }
   }
 
   .card-img-wrapper {
