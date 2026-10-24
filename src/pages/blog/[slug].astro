@@ -106,23 +106,6 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 
     <ConnectBanner />
   </article>
-
-  <script>
-    function setupExternalLinks() {
-      const postBody = document.querySelector('.post-body');
-      if (!postBody) return;
-      postBody.querySelectorAll('a').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname)) {
-          link.setAttribute('target', '_blank');
-          link.setAttribute('rel', 'noopener noreferrer');
-        }
-      });
-    }
-
-    setupExternalLinks();
-    document.addEventListener('astro:after-swap', setupExternalLinks);
-  </script>
 </BaseLayout>
 
 <style>
