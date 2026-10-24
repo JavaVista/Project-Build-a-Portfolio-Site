@@ -86,7 +86,7 @@ const isProd = import.meta.env.PROD;
     <Footer />
 
     <!-- Email Copy Notification Toast -->
-    <div id="email-toast" class="email-toast" role="status" aria-live="polite">
+    <div id="email-toast" class="email-toast" popover="manual" role="status" aria-live="polite">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
@@ -103,10 +103,28 @@ const isProd = import.meta.env.PROD;
           const toastText = document.getElementById('email-toast-text');
           if (!toast || !toastText) return;
           toastText.textContent = message;
-          toast.classList.add('visible');
+
+          if ('popover' in HTMLElement.prototype && toast.showPopover) {
+            try {
+              toast.showPopover();
+            } catch (_) {
+              toast.classList.add('visible');
+            }
+          } else {
+            toast.classList.add('visible');
+          }
+
           if (toastTimeout) clearTimeout(toastTimeout);
           toastTimeout = setTimeout(function() {
-            toast.classList.remove('visible');
+            if ('popover' in HTMLElement.prototype && toast.hidePopover) {
+              try {
+                toast.hidePopover();
+              } catch (_) {
+                toast.classList.remove('visible');
+              }
+            } else {
+              toast.classList.remove('visible');
+            }
           }, 3200);
         }
 
@@ -193,6 +211,9 @@ const isProd = import.meta.env.PROD;
     position: fixed;
     bottom: var(--space-6);
     right: var(--space-6);
+    left: auto;
+    top: auto;
+    margin: 0;
     background-color: var(--bg-surface-elevated);
     color: var(--text-primary);
     border: 1px solid var(--accent-primary);
@@ -204,16 +225,25 @@ const isProd = import.meta.env.PROD;
     gap: var(--space-2);
     font-size: var(--fs-sm);
     font-weight: 500;
-    z-index: 9999;
     opacity: 0;
     transform: translateY(12px);
     pointer-events: none;
     transition: opacity var(--transition-fast), transform var(--transition-fast);
   }
 
+  /* Support native popover open state in top layer with .visible fallback */
+  @supports selector(:popover-open) {
+    .email-toast:popover-open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+
   .email-toast.visible {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: auto;
   }
 
   .email-toast svg {
