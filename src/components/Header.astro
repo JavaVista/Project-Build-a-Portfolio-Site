@@ -55,6 +55,8 @@ const navLinks = [
         id="mobile-menu-btn"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
+        aria-controls="mobile-drawer"
+        popovertarget="mobile-drawer"
       >
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -63,7 +65,7 @@ const navLinks = [
   </div>
 
   <!-- Mobile Dropdown Drawer -->
-  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="mobile-drawer" id="mobile-drawer" popover="auto" aria-label="Mobile Navigation">
     <nav class="mobile-nav" aria-label="Mobile Navigation">
       <ul class="mobile-nav-list">
         {navLinks.map((link) => {
@@ -199,16 +201,34 @@ const navLinks = [
     transition: all var(--transition-fast);
   }
 
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .mobile-toggle[aria-expanded="true"] .hamburger-line:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
   .mobile-drawer {
     display: none;
-    position: absolute;
+    position: fixed;
     top: var(--header-height);
     left: 0;
     right: 0;
+    width: 100%;
+    margin: 0;
     background-color: var(--bg-surface);
+    border: none;
     border-bottom: 1px solid var(--border-subtle);
     padding: var(--space-6) var(--space-4);
     box-shadow: var(--shadow-lg);
+  }
+
+  /* Support native popover open state while preserving .open fallback */
+  @supports selector(:popover-open) {
+    .mobile-drawer:popover-open {
+      display: block;
+    }
   }
 
   .mobile-drawer.open {
@@ -256,7 +276,8 @@ const navLinks = [
     .mobile-actions {
       display: none !important;
     }
-    .mobile-drawer {
+    .mobile-drawer,
+    .mobile-drawer:popover-open {
       display: none !important;
     }
   }
@@ -272,30 +293,42 @@ const navLinks = [
       if (btn.hasAttribute('data-menu-bound')) return;
       btn.setAttribute('data-menu-bound', 'true');
 
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isOpen = drawer.classList.toggle('open');
-        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-      });
-
-      // Close drawer when clicking a navigation link
-      drawer.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          drawer.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          drawer.setAttribute('aria-hidden', 'true');
+      // Native Popover API (Baseline Widely Available)
+      if ('popover' in HTMLElement.prototype) {
+        drawer.addEventListener('toggle', function(e) {
+          btn.setAttribute('aria-expanded', e.newState === 'open' ? 'true' : 'false');
         });
-      });
 
-      // Close when clicking outside drawer
-      document.addEventListener('click', function(e) {
-        if (drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
-          drawer.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          drawer.setAttribute('aria-hidden', 'true');
-        }
-      });
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            drawer.hidePopover();
+          });
+        });
+      } else {
+        // Fallback for older browsers lacking Popover API
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = drawer.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        });
+
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            drawer.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            drawer.setAttribute('aria-hidden', 'true');
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (drawer.classList.contains('open') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+            drawer.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            drawer.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
     }
 
     if (document.readyState === 'loading') {

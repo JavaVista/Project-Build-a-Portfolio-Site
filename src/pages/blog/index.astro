@@ -37,7 +37,7 @@ const allTags = Array.from(new Set(publishedPosts.flatMap((p) => p.data.tags)));
 
     <!-- Articles Grid -->
     <div class="articles-list">
-      {publishedPosts.map((post) => {
+      {publishedPosts.map((post, index) => {
         const formattedDate = new Intl.DateTimeFormat('en-US', {
           month: 'short',
           day: 'numeric',
@@ -49,10 +49,14 @@ const allTags = Array.from(new Set(publishedPosts.flatMap((p) => p.data.tags)));
           <article class="bento-card blog-index-card interactive">
             <div class="blog-index-thumb-wrapper">
               <img
-                src={post.data.coverImage || '/assets/images/laptop-3190194_640.jpg'}
+                src={post.data.coverImage || '/assets/images/laptop-3190194_640.webp'}
                 alt={post.data.coverAlt || post.data.title}
                 class="blog-index-thumb"
-                loading="lazy"
+                width="480"
+                height="270"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : undefined}
+                decoding={index === 0 ? 'sync' : 'async'}
               />
             </div>
             <div class="blog-index-content">

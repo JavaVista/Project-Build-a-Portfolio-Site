@@ -36,68 +36,80 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
 ---
 
 {variant === 'featured' ? (
-  <article class="bento-card featured-article interactive">
-    <div class="featured-img-col">
-      <img
-        src={coverImage}
-        alt={title}
-        class="article-cover"
-        loading={loading}
-        fetchpriority={fetchpriority}
-        decoding={loading === 'eager' ? 'sync' : 'async'}
-      />
-    </div>
-
-    <div class="featured-content-col">
-      <div class="article-meta">
-        <span>{formattedDate}</span>
-        <span class="meta-dot">·</span>
-        <span>{readingTime}</span>
+  <div class="article-card-container featured-container">
+    <article class="bento-card featured-article interactive">
+      <div class="featured-img-col">
+        <img
+          src={coverImage}
+          alt={title}
+          class="article-cover"
+          width="640"
+          height="400"
+          loading={loading}
+          fetchpriority={fetchpriority}
+          decoding={loading === 'eager' ? 'sync' : 'async'}
+        />
       </div>
 
-      <h3 class="article-title">
-        <a href={`/blog/${slug}/`}>{title}</a>
-      </h3>
-
-      {subtitle && <p class="article-subtitle">{subtitle}</p>}
-
-      <p class="article-desc">{description}</p>
-
-      {tags.length > 0 && (
-        <div class="article-tags">
-          {tags.map((tag) => (
-            <span class="tag-pill">{tag}</span>
-          ))}
+      <div class="featured-content-col">
+        <div class="article-meta">
+          <span>{formattedDate}</span>
+          <span class="meta-dot">·</span>
+          <span>{readingTime}</span>
         </div>
-      )}
 
-      <div class="article-cta">
-        <a href={`/blog/${slug}/`} class="card-link">
-          Read More <span aria-hidden="true">&rarr;</span>
-        </a>
+        <h3 class="article-title">
+          <a href={`/blog/${slug}/`}>{title}</a>
+        </h3>
+
+        {subtitle && <p class="article-subtitle">{subtitle}</p>}
+
+        <p class="article-desc">{description}</p>
+
+        {tags.length > 0 && (
+          <div class="article-tags">
+            {tags.map((tag) => (
+              <span class="tag-pill">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        <div class="article-cta">
+          <a href={`/blog/${slug}/`} class="card-link">
+            Read More <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </article>
+    </article>
+  </div>
 ) : (
-  <article class="bento-card compact-article interactive">
-    <div class="compact-img-col">
-      <img src={coverImage} alt="" class="compact-thumb" loading="lazy" />
-    </div>
-    <div class="compact-content">
-      <h3 class="compact-title">
-        <a href={`/blog/${slug}/`}>{title}</a>
-      </h3>
-      {subtitle && <p class="compact-subtitle">{subtitle}</p>}
-      <div class="article-meta compact-meta">
-        <span>{formattedDate}</span>
-        <span class="meta-dot">·</span>
-        <span>{readingTime}</span>
+  <div class="article-card-container compact-container">
+    <article class="bento-card compact-article interactive">
+      <div class="compact-img-col">
+        <img src={coverImage} alt="" class="compact-thumb" width="68" height="68" loading="lazy" decoding="async" />
       </div>
-    </div>
-  </article>
+      <div class="compact-content">
+        <h3 class="compact-title">
+          <a href={`/blog/${slug}/`}>{title}</a>
+        </h3>
+        {subtitle && <p class="compact-subtitle">{subtitle}</p>}
+        <div class="article-meta compact-meta">
+          <span>{formattedDate}</span>
+          <span class="meta-dot">·</span>
+          <span>{readingTime}</span>
+        </div>
+      </div>
+    </article>
+  </div>
 )}
 
 <style>
+  .article-card-container {
+    container-type: inline-size;
+    height: 100%;
+    width: 100%;
+  }
+
   .article-meta {
     display: flex;
     align-items: center;
@@ -121,10 +133,31 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
     height: 100%;
   }
 
+  /* Fallback for browsers without container query support */
   @media (min-width: 640px) {
     .featured-article {
       grid-template-columns: 0.9fr 1.1fr;
       align-items: center;
+    }
+  }
+
+  /* Modern Container Query enhancement based on component slot width */
+  @supports (container-type: inline-size) {
+    @container (max-width: 519px) {
+      .featured-article {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+    }
+
+    @container (min-width: 520px) {
+      .featured-article {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: center;
+      }
+      .article-title {
+        font-size: var(--fs-xl);
+      }
     }
   }
 

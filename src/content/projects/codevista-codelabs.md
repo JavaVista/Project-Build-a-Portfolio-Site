@@ -3,7 +3,7 @@ title: "CodeVista Labs & Codelabs"
 description: "A customized Google Codelabs interactive portal deployed on Google Cloud Run, featuring hands-on cloud tutorials including deploying full-stack Angular with Cloud Run and Cloud SQL."
 featured: true
 order: 3
-coverImage: "/assets/images/codevista-codelabs.png"
+coverImage: "/assets/images/codevista-codelabs.webp"
 tags: ["Google Cloud", "Cloud Run", "Cloud SQL", "Angular", "Docker"]
 demoUrl: "https://codevista-codelabs-387250926785.us-east1.run.app/"
 demoLabel: "Live Codelabs"
