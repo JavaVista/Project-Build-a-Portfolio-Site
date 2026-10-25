@@ -38,7 +38,7 @@ The session was designed as an interactive **hybrid talk + workshop**:
 
 <figure class="media-card">
   <img 
-    src="/assets/images/code-to-cloud-architecture.png" 
+    src="/assets/images/code-to-cloud-architecture.webp" 
     alt="Google Cloud Architecture: Cloud Run connecting to Cloud SQL via IAM" 
     loading="lazy"
     decoding="async"
@@ -68,7 +68,7 @@ I also directed attendees to my custom-built interactive codelabs platform:
 <figure class="media-card">
   <a href="https://codevista-codelabs-387250926785.us-east1.run.app/" target="_blank" rel="noopener noreferrer">
     <img 
-      src="/assets/images/codevista-codelabs.png" 
+      src="/assets/images/codevista-codelabs.webp" 
       alt="CodeVista Labs interactive tutorial portal" 
       loading="lazy"
       decoding="async"

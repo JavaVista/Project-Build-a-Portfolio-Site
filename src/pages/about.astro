@@ -65,7 +65,10 @@ import ConnectBanner from '../components/ConnectBanner.astro';
       <aside class="about-sidebar">
         <div class="bento-card sidebar-card">
           <div class="sidebar-avatar-wrapper">
-            <img src="/assets/images/Me.png" alt="Javier Carrion" class="sidebar-avatar" />
+            <picture>
+              <source srcset="/assets/images/Me.webp" type="image/webp" />
+              <img src="/assets/images/Me.png" alt="Javier Carrion" class="sidebar-avatar" width="85" height="91" loading="lazy" />
+            </picture>
           </div>
           <h3 class="sidebar-name">Javier Carrion</h3>
           <p class="sidebar-role">Software Engineer</p>

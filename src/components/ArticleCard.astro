@@ -43,6 +43,8 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
           src={coverImage}
           alt={title}
           class="article-cover"
+          width="640"
+          height="400"
           loading={loading}
           fetchpriority={fetchpriority}
           decoding={loading === 'eager' ? 'sync' : 'async'}
@@ -84,7 +86,7 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   <div class="article-card-container compact-container">
     <article class="bento-card compact-article interactive">
       <div class="compact-img-col">
-        <img src={coverImage} alt="" class="compact-thumb" loading="lazy" />
+        <img src={coverImage} alt="" class="compact-thumb" width="68" height="68" loading="lazy" decoding="async" />
       </div>
       <div class="compact-content">
         <h3 class="compact-title">

@@ -5,7 +5,7 @@ subtitle: "How to plan, build, collaborate, and deliver a winning project under 
 description: "A comprehensive guide to preparing, executing, and pitching your project at the DevFest Florida Hackathon—from team formation to a reliable 2-3 minute demo."
 publishDate: 2026-09-20
 author: "Javier Carrion"
-coverImage: "/assets/images/devfest-hackathon-team.jpg"
+coverImage: "/assets/images/devfest-hackathon-team.webp"
 coverAlt: "Developers, designers, mentors, and community members building together at DevFest Florida Hackathon"
 coverCaption: "Developers, designers, mentors, and community members building together at DevFest Florida."
 tags: ["DevFest", "Hackathons", "GDG", "Career Growth", "Public Speaking"]
@@ -48,8 +48,8 @@ Believe me, it was intimidating. I was still building confidence as a developer,
 But I took the risk. And I am glad I did.
 
 <div class="two-column-media">
-  <img src="/assets/images/tadhack-orlando-floor.jpg" alt="On the floor at TADHack-mini Orlando 2019" loading="lazy" />
-  <img src="/assets/images/tadhack-orlando-room.jpg" alt="Presentations and participants at TADHack-mini Orlando 2019" loading="lazy" />
+  <img src="/assets/images/tadhack-orlando-floor.webp" alt="On the floor at TADHack-mini Orlando 2019" loading="lazy" />
+  <img src="/assets/images/tadhack-orlando-room.webp" alt="Presentations and participants at TADHack-mini Orlando 2019" loading="lazy" />
 </div>
 <p class="media-caption">On the floor at TADHack-mini Orlando 2019, my first hackathon experience.</p>
 
@@ -58,12 +58,12 @@ Our team built **iApprove**, an SMS multimedia approval MVP designed to eliminat
 The platform automated the workflow using messaging APIs powered by TeleSign and VoIP Innovations.
 
 <figure class="media-card">
-  <img src="/assets/images/iapprove-frontend.png" alt="The frontend of our iApprove hackathon prototype" loading="lazy" />
+  <img src="/assets/images/iapprove-frontend.webp" alt="The frontend of our iApprove hackathon prototype" loading="lazy" />
   <figcaption class="media-caption">The frontend of our iApprove hackathon prototype.</figcaption>
 </figure>
 
 <figure class="media-card">
-  <img src="/assets/images/iapprove-backend.png" alt="The backend dashboard we built for iApprove" loading="lazy" />
+  <img src="/assets/images/iapprove-backend.webp" alt="The backend dashboard we built for iApprove" loading="lazy" />
   <figcaption class="media-caption">The backend dashboard we built for iApprove (the backend was named iApproval for some reason).</figcaption>
 </figure>
 

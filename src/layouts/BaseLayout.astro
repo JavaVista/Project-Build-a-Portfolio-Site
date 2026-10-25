@@ -37,6 +37,15 @@ const isProd = import.meta.env.PROD;
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/notebook-favicon_32.png" />
 
+    <!-- Preload Critical Above-The-Fold LCP Candidates (Fetch Priority & Media Queries) -->
+    <link rel="preload" as="image" href="/assets/images/Me.webp" type="image/webp" fetchpriority="high" />
+    {canonicalURL.pathname === '/' && (
+      <>
+        <link rel="preload" as="image" href="/assets/images/laptop-3190194_640.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+        <link rel="preload" as="image" href="/assets/images/laptop-3190194_1280.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+      </>
+    )}
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalURL} />

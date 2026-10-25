@@ -34,6 +34,8 @@ const isGraphic = coverImage.includes('SCRUMBLE') || coverImage.includes('scrumb
         src={coverImage}
         alt={title}
         class="card-img"
+        width="640"
+        height="360"
         loading={loading}
         fetchpriority={fetchpriority}
         decoding={loading === 'eager' ? 'sync' : 'async'}

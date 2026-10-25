@@ -5,7 +5,7 @@ subtitle: "Learning to Communicate Under Pressure"
 description: "Learn how the PREP framework helps developers communicate clearly in meetings, demos, interviews, presentations, and unexpected conversations."
 publishDate: 2026-10-22
 author: "Javier Carrion"
-coverImage: "/assets/images/technical-communication-cover.jpg"
+coverImage: "/assets/images/technical-communication-cover.webp"
 coverAlt: "Technical Communication for Developers: Using the PREP Framework Under Pressure"
 tags: ["Technical Communication", "Career Growth", "Public Speaking", "PREP Framework"]
 draft: false
@@ -152,7 +152,7 @@ So I created this:
 
 <div class="infographic-container">
   <img 
-    src="/assets/images/prep-framework-infographic.png" 
+    src="/assets/images/prep-framework-infographic.webp" 
     alt="The PREP (Point, Reason, Example, Point) communication framework: A four-step guide to help professionals structure their thoughts when put on the spot during meetings or presentations." 
     class="infographic-image"
     loading="lazy"

@@ -3,7 +3,7 @@ title: "GDG Event Companion"
 description: "An installable progressive web app built with Astro and Tailwind CSS to enhance attendee and organizer experience at Google Developer Groups and DevFest events."
 featured: true
 order: 2
-coverImage: "/assets/images/gdg-event-companion.png"
+coverImage: "/assets/images/gdg-event-companion.webp"
 tags: ["Astro", "Tailwind CSS", "TypeScript", "PWA"]
 demoUrl: "https://javavista.github.io/GDG-Event-Companion/"
 repoUrl: "https://github.com/JavaVista/GDG-Event-Companion"
