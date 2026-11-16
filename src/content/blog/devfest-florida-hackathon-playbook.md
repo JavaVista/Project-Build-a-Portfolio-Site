@@ -8,7 +8,7 @@ author: "Javier Carrion"
 coverImage: "/assets/images/devfest-hackathon-team.webp"
 coverAlt: "Developers, designers, mentors, and community members building together at DevFest Florida Hackathon"
 coverCaption: "Developers, designers, mentors, and community members building together at DevFest Florida."
-tags: ["DevFest", "Hackathons", "GDG", "Career Growth", "Public Speaking"]
+tags: ["DevFest Florida", "Hackathons", "GDG Central Florida", "Developer Community", "Technical Communication", "Public Speaking"]
 draft: false
 readingTime: "8 min read"
 canonicalUrl: "https://devfestflorida.com/devfest-florida-hackathon-playbook"

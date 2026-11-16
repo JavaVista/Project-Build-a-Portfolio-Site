@@ -8,7 +8,7 @@ author: "Javier Carrion"
 coverImage: "/assets/images/code-to-cloud-cover.webp"
 coverAlt: "Code to Cloud: Angular + Cloud Run + Cloud SQL"
 coverCaption: "Hands-on workshop session at SQL Saturday Orlando 2025 exploring modern full-stack cloud deployment."
-tags: ["Google Cloud", "Angular", "Cloud Run", "Cloud SQL", "Public Speaking"]
+tags: ["Google Cloud", "Angular", "Cloud Run", "Cloud SQL", "Developer Community", "Public Speaking"]
 draft: false
 readingTime: "5 min read"
 canonicalUrl: "https://googledevsflorida.blogspot.com/2025/10/code-to-cloud-my-sql-saturday-orlando.html"
