@@ -8,7 +8,7 @@ author: "Javier Carrion"
 coverImage: "/assets/images/angular-control-flow-cover.webp"
 coverAlt: "Angular's New Control Flow Syntax: A Fresh Way to Handle Template Logic"
 coverCaption: "Angular 17 introduced a modern built-in template syntax, replacing asterisk-heavy structural directives with intuitive native blocks."
-tags: ["Angular", "TypeScript", "Frontend Engineering", "Web Development"]
+tags: ["Angular", "TypeScript", "Software Engineering", "Web Development"]
 draft: false
 readingTime: "5 min read"
 canonicalUrl: "https://googledevsflorida.blogspot.com/2025/08/angulars-new-control-flow-syntax-fresh.html"

@@ -8,7 +8,7 @@ author: "Javier Carrion"
 coverImage: "/assets/images/devfest-2026-keynote-cover.webp"
 coverAlt: "DevFest Florida Hackathon 2026 keynote session at UCF Downtown in Orlando"
 coverCaption: "DevFest Florida Hackathon 2026 at UCF Downtown in Orlando. A room filled with developers, builders, and people ready to learn and connect."
-tags: ["Developer Community", "DevFest Florida", "GDG Central Florida", "Hackathons", "Community Building", "Leadership"]
+tags: ["Developer Community", "DevFest Florida", "GDG Central Florida", "Hackathons", "Technical Communication", "Leadership"]
 draft: false
 readingTime: "8 min read"
 ---
